@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protocolo Obsessão Zero - Lisandra Zanuto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* Root Variables */
+    :root {
+      --primary-gradient: linear-gradient(135deg, #7B1FA2, #E91E8C, #C62828);
+      --cta-gradient: linear-gradient(135deg, #8B2FC9, #E91E8C);
+      --accent-yellow: #FFD600;
+      --text-dark: #1A1A1A;
+      --text-white: #FFFFFF;
+      --bg-white: #FFFFFF;
+      --bg-light: #F9F5FF;
+      --seal-gold: #C9A84C;
+      --magenta: #E91E8C;
+      --purple: #7B1FA2;
+
+      --font-display: 'Montserrat', sans-serif;
+      --font-body: 'Montserrat', sans-serif;
+    }
+
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      line-height: 1.6;
+      border: none !important;
+      outline: none !important;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-display);
+      font-weight: 700;
+    }
+
+    .highlight-yellow {
+      color: var(--accent-yellow);
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(26, 26, 26, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    header.visible {
+      opacity: 1;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      color: var(--text-white);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .header-cta {
+      background: var(--cta-gradient);
+      color: var(--text-white);
+      border: none;
+      padding: 0.7rem 1.4rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .header-cta:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Sections */
+    section {
+      min-height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 5rem 2rem;
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    section.fade-in {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Hero - Dobra 1 */
+    .hero {
+      background: linear-gradient(135deg, rgba(123, 31, 162, 0.85), rgba(233, 30, 140, 0.85), rgba(198, 40, 40, 0.85)),
+                  url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23444" width="1200" height="800"/><circle cx="200" cy="150" r="80" fill="%23555" opacity="0.3"/><circle cx="1000" cy="600" r="120" fill="%23555" opacity="0.2"/></svg>');
+      background-size: cover;
+      background-position: center;
+      color: var(--text-white);
+      text-align: center;
+      min-height: 100vh;
+      padding-top: 6rem;
+      padding-bottom: 4rem;
+    }
+
+    .badge {
+      display: inline-block;
+      border: 2px solid var(--accent-yellow);
+      color: var(--text-white);
+      padding: 0.65rem 1.3rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 9vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      max-width: 950px;
+      margin-left: auto;
+      margin-right: auto;
+      letter-spacing: -0.5px;
+    }
+
+    .hero .subtitle {
+      font-size: clamp(1.05rem, 3.5vw, 1.35rem);
+      margin-bottom: 3rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .checkmarks {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin: 2.5rem auto;
+      max-width: 500px;
+    }
+
+    .checkmark-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    .checkmark-icon {
+      color: var(--accent-yellow);
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .cta-btn {
+      background: var(--cta-gradient);
+      color: var(--text-white);
+      border: none;
+      padding: 1.1rem 2.8rem;
+      border-radius: 50px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-top: 2rem;
+      box-shadow: 0 10px 30px rgba(233, 30, 140, 0.4);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(233, 30, 140, 0.6);
+    }
+
+    .hero-comparison {
+      max-width: 950px;
+      width: 100%;
+      margin: 3rem auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .comparison-before {
+      background: linear-gradient(135deg, rgba(198, 40, 40, 0.9), rgba(198, 40, 40, 0.8));
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 450px;
+    }
+
+    .comparison-after {
+      background: linear-gradient(135deg, rgba(56, 142, 60, 0.9), rgba(56, 142, 60, 0.8));
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 450px;
+    }
+
+    .comparison-label-top {
+      color: var(--text-white);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 2rem;
+    }
+
+    .comparison-image-space {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      color: var(--text-white);
+      font-size: 0.9rem;
+      text-align: center;
+      min-height: 250px;
+    }
+
+    .comparison-box {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 8px;
+      padding: 1.5rem;
+      color: var(--text-dark);
+    }
+
+    .comparison-box h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .comparison-box ul {
+      list-style: none;
+    }
+
+    .comparison-box li {
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .comparison-box li::before {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .comparison-before .comparison-box h4 {
+      color: #C62828;
+    }
+
+    .comparison-before .comparison-box li::before {
+      content: '✗';
+      color: #C62828;
+    }
+
+    .comparison-after .comparison-box h4 {
+      color: #388E3C;
+    }
+
+    .comparison-after .comparison-box li::before {
+      content: '✔';
+      color: #388E3C;
+    }
+
+    @media (max-width: 768px) {
+      .hero-comparison {
+        grid-template-columns: 1fr;
+        margin-top: 2rem;
+      }
+
+      .comparison-before,
+      .comparison-after {
+        min-height: auto;
+        padding: 2rem;
+      }
+    }
+
+    /* Dobra 2 - Agitação */
+    .agitation {
+      background: var(--bg-white);
+      max-width: 950px;
+      text-align: center;
+    }
+
+    .agitation h2 {
+      font-size: clamp(1.6rem, 5.5vw, 2.8rem);
+      margin-bottom: 2rem;
+      line-height: 1.3;
+      letter-spacing: -0.3px;
+    }
+
+    .agitation-text {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+      color: #333;
+    }
+
+    .problem-list {
+      text-align: left;
+      max-width: 700px;
+      margin: 2.5rem auto;
+    }
+
+    .problem-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .problem-item:last-child {
+      border-bottom: none;
+    }
+
+    .problem-icon {
+      color: var(--magenta);
+      font-size: 1.6rem;
+      font-weight: bold;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+
+    .problem-item p {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: #333;
+    }
+
+    .agitation-closing {
+      font-size: 1.2rem;
+      font-style: italic;
+      font-weight: 600;
+      margin-top: 3rem;
+      color: #1a1a1a;
+    }
+
+    /* Dobra 3 - Diagnóstico */
+    .diagnostic {
+      background: var(--bg-light);
+      max-width: 950px;
+    }
+
+    .alert-box {
+      border: 2px solid var(--magenta);
+      border-radius: 12px;
+      padding: 2.5rem;
+      background: rgba(233, 30, 140, 0.05);
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .alert-box h3 {
+      font-size: 1.7rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.3px;
+    }
+
+    .alert-subtitle {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .flow-diagram {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 2.5rem 0;
+    }
+
+    .flow-node {
+      background: var(--primary-gradient);
+      color: var(--text-white);
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1rem;
+      box-shadow: 0 8px 25px rgba(233, 30, 140, 0.3);
+    }
+
+    .flow-arrow {
+      font-size: 1.6rem;
+      color: var(--magenta);
+      font-weight: bold;
+    }
+
+    .diagnostic-text {
+      text-align: center;
+      color: #555;
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* Dobra 4 - Solução */
+    .solution {
+      background: var(--bg-white);
+      max-width: 850px;
+      text-align: center;
+    }
+
+    .solution h2 {
+      font-size: clamp(1.8rem, 5.5vw, 3rem);
+      margin-bottom: 1rem;
+      letter-spacing: -0.3px;
+    }
+
+    .solution h2::after {
+      content: '';
+      display: block;
+      width: 120px;
+      height: 4px;
+      background: var(--primary-gradient);
+      border-radius: 2px;
+      margin: 1.2rem auto 0;
+    }
+
+    .solution-subtitle {
+      font-size: 1.2rem;
+      margin: 2.5rem 0;
+      color: #555;
+    }
+
+    .benefits {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .benefit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .benefit-icon {
+      background: var(--magenta);
+      color: var(--text-white);
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    .benefit-text {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #333;
+    }
+
+    /* Dobra 5 - Os 3 Passos */
+    .steps {
+      background: var(--bg-white);
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    .steps h2 {
+      font-size: clamp(1.8rem, 5.5vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 3.5rem;
+      letter-spacing: -0.3px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .step-card {
+      background: var(--bg-white);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 35px rgba(233, 30, 140, 0.15);
+    }
+
+    .step-number {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .step-card h3 {
+      font-size: 1.45rem;
+      margin-bottom: 1.2rem;
+      color: var(--text-dark);
+      letter-spacing: -0.2px;
+    }
+
+    .step-card p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #555;
+      margin-bottom: 0;
+    }
+
+    .step-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--primary-gradient);
+    }
+
+    /* Dobra 6 - Entregáveis */
+    .deliverables {
+      background: var(--bg-light);
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    .deliverables h2 {
+      font-size: clamp(1.8rem, 5.5vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 3.5rem;
+      letter-spacing: -0.3px;
+    }
+
+    .deliverable-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+      align-items: center;
+    }
+
+    .deliverable-mockup {
+      background: var(--primary-gradient);
+      border-radius: 16px;
+      height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-white);
+      font-size: 1rem;
+      text-align: center;
+      padding: 2rem;
+      box-shadow: 0 10px 40px rgba(233, 30, 140, 0.3);
+      font-weight: 600;
+    }
+
+    .mockup-phone {
+      perspective: 1000px;
+      transform: rotateY(-15deg);
+    }
+
+    .mockup-tablet {
+      perspective: 1000px;
+      transform: rotateY(15deg);
+    }
+
+    .deliverable-bullets {
+      list-style: none;
+    }
+
+    .deliverable-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: #333;
+    }
+
+    .deliverable-bullets li::before {
+      content: '✔';
+      color: var(--magenta);
+      font-weight: bold;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .deliverable-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text-dark);
+      letter-spacing: -0.2px;
+    }
+
+    @media (max-width: 768px) {
+      .deliverable-block {
+        grid-template-columns: 1fr;
+      }
+
+      .deliverable-mockup {
+        min-height: 280px;
+      }
+    }
+
+    /* Dobra 7 - Para quem é */
+    .for-who {
+      background: var(--primary-gradient);
+      color: var(--text-white);
+      max-width: 1100px;
+      width: 100%;
+      padding: 4rem 2rem;
+    }
+
+    .for-who h2 {
+      font-size: clamp(1.8rem, 5.5vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 3rem;
+      letter-spacing: -0.3px;
+    }
+
+    .for-who-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .for-who-bullets {
+      list-style: none;
+    }
+
+    .for-who-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      margin-bottom: 1.3rem;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .for-who-bullets li::before {
+      content: '✔';
+      color: var(--accent-yellow);
+      font-weight: bold;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .for-who-photo {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-white);
+      font-size: 0.95rem;
+      backdrop-filter: blur(10px);
+    }
+
+    @media (max-width: 768px) {
+      .for-who-content {
+        grid-template-columns: 1fr;
+      }
+
+      .for-who {
+        padding: 3rem 2rem;
+      }
+    }
+
+    /* Dobra 8 - Recapitulação + Oferta */
+    .recap-offer {
+      background: var(--bg-white);
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    .recap-offer h2 {
+      font-size: clamp(1.8rem, 5.5vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 3rem;
+      letter-spacing: -0.3px;
+    }
+
+    .offer-box {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 3rem;
+      background: rgba(249, 245, 255, 0.6);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .offer-left {
+      list-style: none;
+    }
+
+    .offer-left li {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+      color: #333;
+    }
+
+    .offer-left li::before {
+      content: '✔';
+      color: var(--magenta);
+      font-weight: bold;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .offer-right {
+      text-align: center;
+    }
+
+    .offer-original {
+      font-size: 1.05rem;
+      text-decoration: line-through;
+      color: #999;
+      margin-bottom: 0.5rem;
+    }
+
+    .offer-price {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin: 1rem 0;
+      font-family: var(--font-display);
+      letter-spacing: -1px;
+    }
+
+    .price-label {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .seals {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .seal {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .seal-icon {
+      font-size: 1.3rem;
+    }
+
+    @media (max-width: 768px) {
+      .offer-box {
+        grid-template-columns: 1fr;
+        padding: 2.5rem;
+      }
+    }
+
+    /* Dobra 9 - Fechamento Emocional */
+    .emotional-close {
+      background: var(--bg-white);
+      max-width: 950px;
+      text-align: center;
+    }
+
+    .emotional-close h2 {
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: clamp(1.8rem, 5.5vw, 2.8rem);
+      margin-bottom: 2rem;
+      letter-spacing: -0.3px;
+    }
+
+    .emotional-body {
+      font-size: 1.25rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .consequences {
+      list-style: none;
+      text-align: left;
+      max-width: 700px;
+      margin: 2.5rem auto;
+    }
+
+    .consequences li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      margin-bottom: 1.3rem;
+      font-size: 1.05rem;
+      color: #333;
+      line-height: 1.65;
+    }
+
+    .consequences li::before {
+      content: '✗';
+      color: var(--magenta);
+      font-weight: bold;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .emotional-final {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-top: 3rem;
+      letter-spacing: -0.3px;
+    }
+
+    /* Dobra 10 - Garantia */
+    .guarantee {
+      background: var(--bg-light);
+      max-width: 1100px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    .guarantee-circle {
+      background: linear-gradient(135deg, #C9A84C 0%, #FFD600 100%);
+      border-radius: 50%;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dark);
+      flex-shrink: 0;
+      box-shadow: 0 15px 40px rgba(201, 168, 76, 0.3);
+    }
+
+    .guarantee-days {
+      font-size: 4rem;
+      font-weight: 800;
+      font-family: var(--font-display);
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+    .guarantee-label {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: 0.3rem;
+      letter-spacing: 0.5px;
+    }
+
+    .guarantee-text h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.2px;
+    }
+
+    .guarantee-text p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .guarantee {
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+
+      .guarantee-circle {
+        width: 260px;
+        height: 260px;
+      }
+    }
+
+    /* Dobra 11 - Bio Lisandra */
+    .bio {
+      background: var(--bg-white);
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    .bio-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .bio-photo {
+      background: var(--primary-gradient);
+      border-radius: 16px;
+      height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-white);
+      font-size: 0.95rem;
+    }
+
+    .bio-text h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.2px;
+    }
+
+    .bio-text h3::after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 3px;
+      background: var(--primary-gradient);
+      margin-top: 1rem;
+    }
+
+    .bio-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #555;
+      margin-bottom: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .bio-signature {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-style: italic;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-top: 2rem;
+      letter-spacing: -0.3px;
+    }
+
+    @media (max-width: 768px) {
+      .bio-content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Dobra 12 - CTA Final */
+    .final-cta {
+      background: var(--primary-gradient);
+      color: var(--text-white);
+      max-width: 100%;
+      width: 100%;
+      padding: 5rem 2rem;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(2rem, 7vw, 3.8rem);
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .final-offer-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 3rem;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .final-offer-box .offer-price {
+      color: var(--accent-yellow);
+    }
+
+    .final-offer-box .price-label {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .final-cta-btn {
+      background: linear-gradient(135deg, #FFD600, #FFE082);
+      color: var(--text-dark);
+      border: none;
+      padding: 1.2rem 2.8rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      transition: transform 0.2s ease;
+      margin: 1.5rem 0;
+      font-family: var(--font-body);
+    }
+
+    .final-cta-btn:hover {
+      transform: translateY(-4px);
+    }
+
+    .final-seals {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .final-seal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .final-seal-icon {
+      font-size: 1.6rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      section {
+        padding: 3rem 1.5rem;
+      }
+
+      header {
+        padding: 1rem 1.5rem;
+      }
+
+      .logo {
+        font-size: 1.1rem;
+      }
+
+      .header-cta {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+      }
+
+      .flow-diagram {
+        gap: 0.5rem;
+      }
+
+      .flow-node {
+        width: 100px;
+        height: 100px;
+        font-size: 0.85rem;
+      }
+
+      .flow-arrow {
+        display: none;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .seals {
+        gap: 0.8rem;
+        font-size: 0.85rem;
+      }
+
+      .final-seals {
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="logo">Obsessão Zero</div>
+    <button class="header-cta" onclick="document.querySelector('#oferta').scrollIntoView()">Quero Acessar</button>
+  </header>
+
+  <!-- Dobra 1: Hero -->
+  <section class="hero fade-in">
+    <div class="badge">▶ Protocolo Emocional</div>
+    <h1>Copie e cole esse protocolo emocional simples para controlar a <span class="highlight-yellow">compulsão pelo seu ex</span></h1>
+    <p class="subtitle">Mesmo que sua cabeça não consiga parar de pensar nele</p>
+
+    <div class="hero-comparison">
+      <!-- Antes -->
+      <div class="comparison-before">
+        <div class="comparison-label-top">Antes: Obsessão</div>
+        <div class="comparison-image-space">
+          [Foto da mulher antes]
+        </div>
+        <div class="comparison-box">
+          <h4>❌ Vive no passado</h4>
+          <ul>
+            <li>Ansiedade e carência</li>
+            <li>Autoestima baixa</li>
+            <li>Dependência emocional</li>
+            <li>Sofre em silêncio</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Depois -->
+      <div class="comparison-after">
+        <div class="comparison-label-top">Depois: Superação</div>
+        <div class="comparison-image-space">
+          [Foto da mulher depois]
+        </div>
+        <div class="comparison-box">
+          <h4>✅ Liberdade emocional</h4>
+          <ul>
+            <li>Autoestima em alta</li>
+            <li>Novas oportunidades</li>
+            <li>Paz e leveza</li>
+            <li>Foco em si mesma</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="checkmarks">
+      <div class="checkmark-item">
+        <span class="checkmark-icon">✔</span>
+        <span>Controlar recaídas</span>
+      </div>
+      <div class="checkmark-item">
+        <span class="checkmark-icon">✔</span>
+        <span>Reduzir ansiedade</span>
+      </div>
+      <div class="checkmark-item">
+        <span class="checkmark-icon">✔</span>
+        <span>Interromper o ciclo</span>
+      </div>
+    </div>
+
+    <button class="cta-btn" onclick="document.querySelector('#oferta').scrollIntoView()">QUERO CONTROLAR ESSA COMPULSÃO</button>
+  </section>
+
+  <!-- Dobra 2: Agitação -->
+  <section class="agitation fade-in">
+    <h2>Você já percebeu que tenta parar… mas sempre volta pra ele de novo?</h2>
+
+    <p class="agitation-text">
+      Você bloqueia, desbloqueia. São 2 da manhã e você ainda está acordada analisando cada gesto, cada palavra, cada silêncio. Tentando entender por que ele desapareceu assim, sem explicação.
+    </p>
+
+    <div class="problem-list">
+      <div class="problem-item">
+        <div class="problem-icon">✗</div>
+        <p><strong>Esperando mensagem</strong> que você sabe que não vem</p>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon">✗</div>
+        <p><strong>Analisando visualização</strong> no WhatsApp, Stories, likes</p>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon">✗</div>
+        <p><strong>Criando cenários na cabeça</strong> sobre o que ele está fazendo</p>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon">✗</div>
+        <p><strong>Imaginando ele com outra</strong> enquanto você fica para trás</p>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon">✗</div>
+        <p><strong>Tentando entender o porquê</strong> do sumiço, da rejeição</p>
+      </div>
+    </div>
+
+    <p class="agitation-closing">E isso cansa. Porque no fundo você sabe: não consegue mais controlar a própria mente.</p>
+  </section>
+
+  <!-- Dobra 3: Diagnóstico -->
+  <section class="diagnostic fade-in">
+    <div class="alert-box">
+      <h3>O problema não é saudade.</h3>
+      <p class="alert-subtitle">O problema é que sua mente entrou em um ciclo automático emocional.</p>
+    </div>
+
+    <p class="diagnostic-text">Veja esse padrão:</p>
+
+    <div class="flow-diagram">
+      <div class="flow-node">Pensamento</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Impulso</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Ansiedade</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Recaída</div>
+    </div>
+
+    <p class="diagnostic-text">
+      Você pensa nele → Quer falar com ele → Fica ansiosa esperando resposta → Volta a procurar, a stalquear, a clicar no perfil dele. E então… começa tudo de novo.
+    </p>
+  </section>
+
+  <!-- Dobra 4: Solução -->
+  <section class="solution fade-in">
+    <h2>É simples assim.</h2>
+    <p class="solution-subtitle">Existe um protocolo para interromper esse ciclo emocional.</p>
+
+    <div class="benefits">
+      <div class="benefit">
+        <div class="benefit-icon">✔</div>
+        <div class="benefit-text">Reconhecer o ciclo</div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">✔</div>
+        <div class="benefit-text">Interromper no impulso</div>
+      </div>
+      <div class="benefit">
+        <div class="benefit-icon">✔</div>
+        <div class="benefit-text">Recuperar o controle</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dobra 5: Os 3 Passos -->
+  <section class="steps fade-in">
+    <h2>Esses são os 3 passos para controlar a compulsão emocional</h2>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <h3>Parar e Reconhecer</h3>
+        <p>Identifique quando você entrou no ciclo. Qual foi o gatilho? O que você está sentindo? A respiração acelerada, o peito aperto, a vontade incontrolável de abrir o WhatsApp.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <h3>Aplicar a Técnica</h3>
+        <p>Use o protocolo que vou ensinar para interromper o impulso no exato momento. Isso que separa quem consegue fazer e quem fica girando em volta da compulsão.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <h3>Construir Nova Resposta</h3>
+        <p>Repetição. Cada vez que você interrompe, você está remapeando seu cérebro. Seu sistema nervoso aprende uma resposta nova. Livre do ex. Em paz consigo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dobra 6: Entregáveis -->
+  <section class="deliverables fade-in">
+    <h2>Agora veja exatamente o que você vai receber</h2>
+
+    <div class="deliverable-block">
+      <div class="deliverable-mockup mockup-phone">Aula Prática<br>Protocolo Obsessão Zero</div>
+      <div>
+        <h4 class="deliverable-title">Aula Prática</h4>
+        <ul class="deliverable-bullets">
+          <li>A verdade sobre por que você não consegue parar (não é fraqueza)</li>
+          <li>Os 3 passos do protocolo passo a passo</li>
+          <li>Técnicas de respiração e ancoramento emocional</li>
+          <li>Como usar quando bate a vontade de madrugada</li>
+          <li>Bonus: scripts para bloquear gatilhos no seu celular</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="deliverable-block">
+      <div class="deliverable-mockup mockup-tablet">Folha de Exercícios<br>Emocionais</div>
+      <div>
+        <h4 class="deliverable-title">Folha de Exercícios</h4>
+        <ul class="deliverable-bullets">
+          <li>Mapeamento dos seus gatilhos pessoais</li>
+          <li>Tabela para rastrear compulsões (você vai se surpreender com o padrão)</li>
+          <li>Exercícios de ressignificação emocional</li>
+          <li>Plano de ação para os próximos 30 dias</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="deliverable-block">
+      <div class="deliverable-mockup">Protocolo Prático<br>Anti-Recaída</div>
+      <div>
+        <h4 class="deliverable-title">Protocolo Anti-Recaída</h4>
+        <ul class="deliverable-bullets">
+          <li>O que fazer quando a recaída bate (sem culpa, sem julgamento)</li>
+          <li>Checklist de retorno ao protocolo após deslize</li>
+          <li>Frases de ancoragem para momentos críticos</li>
+          <li>Contato direto comigo para casos emergenciais (durante 30 dias)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dobra 7: Para Quem É -->
+  <section class="for-who fade-in">
+    <h2>Esse protocolo foi criado para mulheres que:</h2>
+
+    <div class="for-who-content">
+      <ul class="for-who-bullets">
+        <li>Sabem que o relacionamento acabou mas o cérebro não consegue processar</li>
+        <li>Acordam pensando nele e dormem vendo o perfil dele</li>
+        <li>Tentaram terapia mas precisam de algo prático e funcional agora</li>
+        <li>Conhecem a dor mas não conhecem o caminho para sair</li>
+        <li>Querem recuperar a dignidade, a calma e o controle emocional</li>
+        <li>Estão cansadas de viver em um loop de compulsão e arrependimento</li>
+      </ul>
+      <div class="for-who-photo">Foto de Lisandra Zanuto</div>
+    </div>
+  </section>
+
+  <!-- Dobra 8: Recapitulação + Oferta -->
+  <section class="recap-offer fade-in" id="oferta">
+    <h2>Recapitulando tudo o que você vai receber:</h2>
+
+    <div class="offer-box">
+      <ul class="offer-left">
+        <li>Aula Prática (vídeo + conteúdo escrito)</li>
+        <li>Folha de Exercícios Emocionais (PDF interativo)</li>
+        <li>Protocolo Anti-Recaída (printável)</li>
+        <li>Módulo Bônus: Técnicas de Mindfulness</li>
+        <li>Comunidade privada no Telegram (30 dias)</li>
+        <li>Suporte direto via WhatsApp (7 dias)</li>
+        <li>Garantia incondicional 7 dias ou 100% de volta</li>
+      </ul>
+
+      <div class="offer-right">
+        <p class="offer-original">De R$ 290,00</p>
+        <p class="price-label">por apenas</p>
+        <p class="offer-price">R$ 87,00</p>
+        <p class="price-label">ou em até 3x sem juros</p>
+        <button class="cta-btn">ACESSAR AGORA</button>
+
+        <div class="seals">
+          <div class="seal">
+            <span class="seal-icon">🔒</span>
+            <span>Compra Segura</span>
+          </div>
+          <div class="seal">
+            <span class="seal-icon">🔒</span>
+            <span>Privacidade Protegida</span>
+          </div>
+          <div class="seal">
+            <span class="seal-icon">⭐</span>
+            <span>Satisfação Garantida</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dobra 9: Fechamento Emocional -->
+  <section class="emotional-close fade-in">
+    <h2>Me responda com sinceridade…</h2>
+
+    <p class="emotional-body">Até quando você vai continuar deixando sua mente controlar você?</p>
+
+    <ul class="consequences">
+      <li>Mais noites sem dormir analisando o que você poderia ter feito diferente</li>
+      <li>Mais semanas perdidas em stalking e esperança de retorno</li>
+      <li>Mais amigos cansados de ouvir a mesma história</li>
+      <li>Mais oportunidades perdidas enquanto você fica presa no passado</li>
+      <li>Mais de você sacrificada por alguém que nem pensa em você</li>
+    </ul>
+
+    <p class="emotional-final">Isso não vai parar sozinho.</p>
+  </section>
+
+  <!-- Dobra 10: Garantia -->
+  <section class="guarantee fade-in">
+    <div class="guarantee-circle">
+      <div class="guarantee-days">7</div>
+      <div class="guarantee-label">DIAS GARANTIA</div>
+    </div>
+
+    <div class="guarantee-text">
+      <h3>Risco zero para você</h3>
+      <p>Se em 7 dias você não sentir mudança, não entender o protocolo, ou simplesmente não gostar, reembolso integral. Sem perguntas, sem burocracia. Clica lá na sua conta, solicita devolução, e pronto. Seu dinheiro volta em 24h. A culpa é minha se não funcionou, não sua.</p>
+    </div>
+  </section>
+
+  <!-- Dobra 11: Bio Lisandra -->
+  <section class="bio fade-in">
+    <div class="bio-content">
+      <div class="bio-photo">Foto de Lisandra Zanuto</div>
+
+      <div class="bio-text">
+        <h3>SOBRE LISANDRA ZANUTO</h3>
+        <p>
+          Sou psicóloga clínica há mais de 10 anos, especializada em traumas emocionais, apego ansioso e relacionamentos tóxicos. Durante minha carreira, criei métodos próprios de intervenção rápida que funcionam fora do consultório — porque nem toda mulher tem acesso a terapia contínua.
+        </p>
+        <p>
+          Criei a comunidade <strong>Las Lobas</strong>, que hoje reúne mais de 80 mil mulheres. E dentro dessa comunidade, 6 mil mulheres fizeram o Protocolo Obsessão Zero. Os resultados? 87% delas conseguiram interromper a compulsão em menos de 30 dias.
+        </p>
+        <p class="bio-signature">Lisandra Zanuto</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dobra 12: CTA Final -->
+  <section class="final-cta fade-in">
+    <h2>PROTOCOLO OBSESSÃO ZERO</h2>
+
+    <div class="final-offer-box">
+      <p class="offer-original">De R$ 290,00</p>
+      <p class="price-label">por apenas</p>
+      <p class="offer-price">R$ 87,00</p>
+
+      <button class="final-cta-btn">SIM! QUERO ACESSAR AGORA</button>
+
+      <div class="final-seals">
+        <div class="final-seal">
+          <span class="final-seal-icon">✔</span>
+          <span>Acesso Imediato</span>
+        </div>
+        <div class="final-seal">
+          <span class="final-seal-icon">🔒</span>
+          <span>100% Seguro</span>
+        </div>
+        <div class="final-seal">
+          <span class="final-seal-icon">↩️</span>
+          <span>7 Dias Garantia</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Header visibility on scroll
+    const header = document.getElementById('header');
+    const hero = document.querySelector('.hero');
+
+    window.addEventListener('scroll', () => {
+      const heroBottom = hero.offsetHeight;
+      if (window.scrollY > heroBottom * 0.5) {
+        header.classList.add('visible');
+      } else {
+        header.classList.remove('visible');
+      }
+    });
+
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationDelay = '0s';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
