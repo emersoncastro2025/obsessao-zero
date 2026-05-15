@@ -232,120 +232,24 @@
       box-shadow: 0 15px 40px rgba(233, 30, 140, 0.6);
     }
 
-    .hero-comparison {
+    .hero-image-container {
       max-width: 950px;
       width: 100%;
       margin: 3rem auto 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     }
 
-    .comparison-before {
-      background: linear-gradient(135deg, rgba(198, 40, 40, 0.9), rgba(198, 40, 40, 0.8));
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 450px;
-    }
-
-    .comparison-after {
-      background: linear-gradient(135deg, rgba(56, 142, 60, 0.9), rgba(56, 142, 60, 0.8));
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 450px;
-    }
-
-    .comparison-label-top {
-      color: var(--text-white);
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 2rem;
-    }
-
-    .comparison-image-space {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 8px;
-      margin: 1.5rem 0;
-      color: var(--text-white);
-      font-size: 0.9rem;
-      text-align: center;
-      min-height: 250px;
-    }
-
-    .comparison-box {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 8px;
-      padding: 1.5rem;
-      color: var(--text-dark);
-    }
-
-    .comparison-box h4 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .comparison-box ul {
-      list-style: none;
-    }
-
-    .comparison-box li {
-      font-size: 0.9rem;
-      margin-bottom: 0.6rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .comparison-box li::before {
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-
-    .comparison-before .comparison-box h4 {
-      color: #C62828;
-    }
-
-    .comparison-before .comparison-box li::before {
-      content: '✗';
-      color: #C62828;
-    }
-
-    .comparison-after .comparison-box h4 {
-      color: #388E3C;
-    }
-
-    .comparison-after .comparison-box li::before {
-      content: '✔';
-      color: #388E3C;
+    .hero-full-image {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     @media (max-width: 768px) {
-      .hero-comparison {
-        grid-template-columns: 1fr;
+      .hero-image-container {
         margin-top: 2rem;
-      }
-
-      .comparison-before,
-      .comparison-after {
-        min-height: auto;
-        padding: 2rem;
       }
     }
 
@@ -1187,40 +1091,8 @@
     <h1>Copie e cole esse protocolo emocional simples para controlar a <span class="highlight-yellow">compulsão pelo seu ex</span></h1>
     <p class="subtitle">Mesmo que sua cabeça não consiga parar de pensar nele</p>
 
-    <div class="hero-comparison">
-      <!-- Antes -->
-      <div class="comparison-before">
-        <div class="comparison-label-top">Antes: Obsessão</div>
-        <div class="comparison-image-space">
-          [Foto da mulher antes]
-        </div>
-        <div class="comparison-box">
-          <h4>❌ Vive no passado</h4>
-          <ul>
-            <li>Ansiedade e carência</li>
-            <li>Autoestima baixa</li>
-            <li>Dependência emocional</li>
-            <li>Sofre em silêncio</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Depois -->
-      <div class="comparison-after">
-        <div class="comparison-label-top">Depois: Superação</div>
-        <div class="comparison-image-space">
-          [Foto da mulher depois]
-        </div>
-        <div class="comparison-box">
-          <h4>✅ Liberdade emocional</h4>
-          <ul>
-            <li>Autoestima em alta</li>
-            <li>Novas oportunidades</li>
-            <li>Paz e leveza</li>
-            <li>Foco em si mesma</li>
-          </ul>
-        </div>
-      </div>
+    <div class="hero-image-container">
+      <img src="antes-depos.png" alt="Antes e Depois - Protocolo de Des-Obsessão" class="hero-full-image">
     </div>
 
     <div class="checkmarks">
