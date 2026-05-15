@@ -300,16 +300,46 @@
       animation: slideInDown 0.8s ease-out;
     }
 
+    .hero-subtitle-group {
+      margin: var(--spacing-2xl) auto var(--spacing-2xl);
+      animation: fadeIn 0.8s ease-out 0.2s both;
+    }
+
     .hero .subtitle {
-      font-size: clamp(1.1rem, 4vw, 1.5rem);
-      margin-bottom: var(--spacing-3xl);
+      font-size: clamp(1.05rem, 3.5vw, 1.35rem);
       max-width: 750px;
       margin-left: auto;
       margin-right: auto;
       font-weight: 400;
-      line-height: 1.9;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0;
+    }
+
+    .hero-benefits {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      margin: var(--spacing-2xl) auto;
+      max-width: 600px;
+      animation: fadeIn 0.8s ease-out 0.4s both;
+    }
+
+    .hero-benefit {
+      font-size: var(--font-size-lg);
+      font-weight: 500;
       color: rgba(255, 255, 255, 0.95);
-      animation: fadeIn 0.8s ease-out 0.2s both;
+      padding: var(--spacing-sm) 0;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    .hero-benefit::before {
+      content: '✔';
+      color: var(--accent-yellow);
+      font-weight: 700;
+      font-size: 1.4rem;
     }
 
     @keyframes slideInDown {
@@ -333,33 +363,11 @@
     }
 
     .checkmarks {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-md);
-      margin: var(--spacing-xl) auto;
-      max-width: 550px;
-      animation: fadeIn 0.8s ease-out 0.4s both;
+      display: none;
     }
 
     .checkmark-item {
-      display: flex;
-      align-items: center;
-      padding: var(--spacing-md);
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-md);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: all var(--transition-normal);
-    }
-
-    .checkmark-item:hover {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateX(8px);
-    }
-
-    .checkmark-item {
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
       gap: 0.8rem;
@@ -1297,26 +1305,21 @@
   <!-- Dobra 1: Hero -->
   <section class="hero fade-in">
     <div class="badge">▶ Protocolo Emocional</div>
+
     <h1>Copie e cole esse protocolo emocional simples para controlar a <span class="highlight-yellow">compulsão pelo seu ex</span></h1>
-    <p class="subtitle">Mesmo que sua cabeça não consiga parar de pensar nele</p>
+
+    <div class="hero-subtitle-group">
+      <p class="subtitle">Mesmo que sua cabeça não consiga parar de pensar nele</p>
+    </div>
 
     <div class="hero-image-container">
       <img src="antes-depos.png" alt="Antes e Depois - Protocolo de Des-Obsessão" class="hero-full-image">
     </div>
 
-    <div class="checkmarks">
-      <div class="checkmark-item">
-        <span class="checkmark-icon">✔</span>
-        <span>Controlar recaídas</span>
-      </div>
-      <div class="checkmark-item">
-        <span class="checkmark-icon">✔</span>
-        <span>Reduzir ansiedade</span>
-      </div>
-      <div class="checkmark-item">
-        <span class="checkmark-icon">✔</span>
-        <span>Interromper o ciclo</span>
-      </div>
+    <div class="hero-benefits">
+      <div class="hero-benefit">✔ Controlar recaídas</div>
+      <div class="hero-benefit">✔ Reduzir ansiedade</div>
+      <div class="hero-benefit">✔ Interromper o ciclo</div>
     </div>
 
     <button class="cta-btn" onclick="document.querySelector('#oferta').scrollIntoView()">QUERO CONTROLAR ESSA COMPULSÃO</button>
