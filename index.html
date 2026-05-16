@@ -299,43 +299,57 @@
       margin: 0;
     }
 
-    .hero-image-wrapper {
-      position: relative;
-      max-width: 950px;
+    .hero-image-benefits-container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: var(--spacing-2xl);
+      align-items: center;
+      max-width: 1100px;
       width: 100%;
       margin: var(--spacing-lg) auto var(--spacing-lg);
     }
 
-    .hero-benefits {
+    .hero-benefits-left {
       display: flex;
       flex-direction: column;
-      gap: var(--spacing-xl);
-      position: absolute;
-      right: var(--spacing-lg);
-      bottom: var(--spacing-lg);
-      max-width: 280px;
-      animation: fadeIn 0.8s ease-out 0.4s both;
+      gap: var(--spacing-lg);
+      animation: fadeIn 0.8s ease-out 0.3s both;
     }
 
     .hero-benefit {
-      font-size: var(--font-size-base);
+      font-size: var(--font-size-xl);
       font-weight: 600;
       color: var(--text-white);
-      padding: var(--spacing-md);
       display: flex;
       align-items: center;
       gap: var(--spacing-md);
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: var(--radius-md);
-      backdrop-filter: blur(10px);
     }
 
     .hero-benefit::before {
       content: '✔';
       color: var(--accent-yellow);
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 2rem;
       flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .hero-image-benefits-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+      }
+
+      .hero-benefits-left {
+        gap: var(--spacing-md);
+      }
+
+      .hero-benefit {
+        font-size: var(--font-size-base);
+      }
+
+      .hero-benefit::before {
+        font-size: 1.5rem;
+      }
     }
 
     @keyframes slideInDown {
@@ -1308,15 +1322,15 @@
       <p class="subtitle">Mesmo que sua cabeça não consiga parar de pensar nele</p>
     </div>
 
-    <div class="hero-image-wrapper">
-      <div class="hero-image-container">
-        <img src="antes-depos.png" alt="Antes e Depois - Protocolo de Des-Obsessão" class="hero-full-image">
-      </div>
-
-      <div class="hero-benefits">
+    <div class="hero-image-benefits-container">
+      <div class="hero-benefits-left">
         <div class="hero-benefit">✔ Controlar recaídas</div>
         <div class="hero-benefit">✔ Reduzir ansiedade</div>
         <div class="hero-benefit">✔ Interromper o ciclo</div>
+      </div>
+
+      <div class="hero-image-container">
+        <img src="antes-depos.png" alt="Antes e Depois - Protocolo de Des-Obsessão" class="hero-full-image">
       </div>
     </div>
 
