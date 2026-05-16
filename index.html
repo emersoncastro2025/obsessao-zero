@@ -975,7 +975,7 @@
       padding: var(--spacing-2xl);
       background: linear-gradient(135deg, #FFFFFF 0%, #FAF9F7 100%);
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.8fr 1.2fr;
       gap: var(--spacing-2xl);
       align-items: center;
       box-shadow: var(--shadow-md);
@@ -983,6 +983,19 @@
       backdrop-filter: blur(10px);
       width: 100%;
       margin: 0 auto;
+    }
+
+    .offer-mockup {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      object-fit: contain;
+    }
+
+    .offer-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xl);
     }
 
     .offer-box:hover {
@@ -1062,6 +1075,10 @@
       .offer-box {
         grid-template-columns: 1fr;
         padding: 2.5rem;
+      }
+
+      .offer-content {
+        flex-direction: column;
       }
     }
 
@@ -1571,17 +1588,20 @@
     <h2>Recapitulando tudo o que você vai receber:</h2>
 
     <div class="offer-box">
-      <ul class="offer-left">
-        <li>Aula Prática (vídeo + conteúdo escrito)</li>
-        <li>Folha de Exercícios Emocionais (PDF interativo)</li>
-        <li>Protocolo Anti-Recaída (printável)</li>
-        <li>Módulo Bônus: Técnicas de Mindfulness</li>
-        <li>Comunidade privada no Telegram (30 dias)</li>
-        <li>Suporte direto via WhatsApp (7 dias)</li>
-        <li>Garantia incondicional 7 dias ou 100% de volta</li>
-      </ul>
+      <img src="/mockupdosprodutos.png" alt="Mockup dos produtos entregáveis do Protocolo Obsessão Zero" class="offer-mockup" loading="lazy">
 
-      <div class="offer-right">
+      <div class="offer-content">
+        <ul class="offer-left">
+          <li>Aula Prática (vídeo + conteúdo escrito)</li>
+          <li>Folha de Exercícios Emocionais (PDF interativo)</li>
+          <li>Protocolo Anti-Recaída (printável)</li>
+          <li>Módulo Bônus: Técnicas de Mindfulness</li>
+          <li>Comunidade privada no Telegram (30 dias)</li>
+          <li>Suporte direto via WhatsApp (7 dias)</li>
+          <li>Garantia incondicional 7 dias ou 100% de volta</li>
+        </ul>
+
+        <div class="offer-right">
         <p class="offer-original">De R$ 290,00</p>
         <p class="price-label">por apenas</p>
         <p class="offer-price">R$ 87,00</p>
@@ -1603,6 +1623,7 @@
           </div>
         </div>
       </div>
+        </div>
     </div>
   </section>
 
