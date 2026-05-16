@@ -299,56 +299,57 @@
       margin: 0;
     }
 
-    .hero-image-benefits-container {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: var(--spacing-2xl);
-      align-items: center;
-      max-width: 1100px;
-      width: 100%;
-      margin: var(--spacing-lg) auto var(--spacing-lg);
-    }
-
-    .hero-benefits-left {
+    .hero-benefits-top {
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       gap: var(--spacing-lg);
+      flex-wrap: wrap;
+      margin: var(--spacing-lg) auto;
+      max-width: 1000px;
       animation: fadeIn 0.8s ease-out 0.3s both;
     }
 
-    .hero-benefit {
-      font-size: var(--font-size-xl);
-      font-weight: 600;
+    .hero-benefit-item {
+      background: rgba(255, 255, 255, 0.15);
       color: var(--text-white);
+      padding: var(--spacing-md) var(--spacing-lg);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-lg);
+      font-weight: 600;
       display: flex;
       align-items: center;
       gap: var(--spacing-md);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      transition: all var(--transition-normal);
     }
 
-    .hero-benefit::before {
+    .hero-benefit-item:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .hero-benefit-item::before {
       content: '✔';
       color: var(--accent-yellow);
       font-weight: 700;
-      font-size: 2rem;
-      flex-shrink: 0;
+      font-size: 1.4rem;
     }
 
     @media (max-width: 768px) {
-      .hero-image-benefits-container {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-      }
-
-      .hero-benefits-left {
+      .hero-benefits-top {
+        flex-direction: column;
         gap: var(--spacing-md);
       }
 
-      .hero-benefit {
+      .hero-benefit-item {
         font-size: var(--font-size-base);
+        padding: var(--spacing-sm) var(--spacing-md);
       }
 
-      .hero-benefit::before {
-        font-size: 1.5rem;
+      .hero-benefit-item::before {
+        font-size: 1.2rem;
       }
     }
 
@@ -1343,16 +1344,14 @@
       <p class="subtitle">Mesmo que sua cabeça não consiga parar de pensar nele</p>
     </div>
 
-    <div class="hero-image-benefits-container">
-      <div class="hero-benefits-left">
-        <div class="hero-benefit">✔ Controlar recaídas</div>
-        <div class="hero-benefit">✔ Reduzir ansiedade</div>
-        <div class="hero-benefit">✔ Interromper o ciclo</div>
-      </div>
+    <div class="hero-benefits-top">
+      <div class="hero-benefit-item">✔ Controlar recaídas</div>
+      <div class="hero-benefit-item">✔ Reduzir ansiedade</div>
+      <div class="hero-benefit-item">✔ Interromper o ciclo</div>
+    </div>
 
-      <div class="hero-image-container">
-        <img src="antes-depos.png" alt="Antes e Depois - Protocolo de Des-Obsessão" class="hero-full-image">
-      </div>
+    <div class="hero-image-container">
+      <img src="antes-depos.png" alt="Antes e Depois - Protocolo de Des-Obsessão" class="hero-full-image">
     </div>
 
     <button class="cta-btn" onclick="document.querySelector('#oferta').scrollIntoView()">QUERO CONTROLAR ESSA COMPULSÃO</button>
