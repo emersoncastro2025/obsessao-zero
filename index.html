@@ -831,6 +831,19 @@
       padding: 2rem;
       box-shadow: 0 10px 40px rgba(233, 30, 140, 0.3);
       font-weight: 600;
+      overflow: hidden;
+    }
+
+    .deliverable-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      transition: transform var(--transition-slow);
+    }
+
+    .deliverable-mockup:hover .deliverable-image {
+      transform: scale(1.05);
     }
 
     .mockup-phone {
@@ -1547,7 +1560,9 @@
     <h2>Agora veja exatamente o que você vai receber</h2>
 
     <div class="deliverable-block">
-      <div class="deliverable-mockup mockup-phone">Aula Prática<br>Protocolo Obsessão Zero</div>
+      <div class="deliverable-mockup mockup-phone">
+        <img src="/aula-pratica.png" alt="Aula Prática - Como Parar de Pensar Nele com vídeo e conteúdo escrito" class="deliverable-image" loading="lazy">
+      </div>
       <div>
         <h4 class="deliverable-title">Aula Prática</h4>
         <ul class="deliverable-bullets">
@@ -1561,7 +1576,24 @@
     </div>
 
     <div class="deliverable-block">
-      <div class="deliverable-mockup mockup-tablet">Folha de Exercícios<br>Emocionais</div>
+      <div class="deliverable-mockup mockup-tablet">
+        <img src="/protocolo-obsessao-zero-box.png" alt="Protocolo Obsessão Zero - Caixa com método emocional completo" class="deliverable-image" loading="lazy">
+      </div>
+      <div>
+        <h4 class="deliverable-title">Protocolo Obsessão Zero</h4>
+        <ul class="deliverable-bullets">
+          <li>Método prático e emocional em um só lugar</li>
+          <li>Acesso imediato a todo o conteúdo</li>
+          <li>Moldura bonita para lembrete visual diário</li>
+          <li>Tudo que você precisa para começar hoje</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="deliverable-block">
+      <div class="deliverable-mockup mockup-tablet">
+        <img src="/folha-exercicios.png" alt="Folha de Exercícios Emocionais - Material imprimível com exercícios práticos" class="deliverable-image" loading="lazy">
+      </div>
       <div>
         <h4 class="deliverable-title">Folha de Exercícios</h4>
         <ul class="deliverable-bullets">
@@ -1574,7 +1606,9 @@
     </div>
 
     <div class="deliverable-block">
-      <div class="deliverable-mockup">Protocolo Prático<br>Anti-Recaída</div>
+      <div class="deliverable-mockup">
+        <img src="/protocolo-anti-recaida.png" alt="Protocolo Prático Anti-Recaída - Livro com método passo a passo" class="deliverable-image" loading="lazy">
+      </div>
       <div>
         <h4 class="deliverable-title">Protocolo Anti-Recaída</h4>
         <ul class="deliverable-bullets">
