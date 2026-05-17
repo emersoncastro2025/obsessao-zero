@@ -64,6 +64,12 @@
       --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
       --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
       --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.15);
+
+      /* Design System — Adicionados na refatoração */
+      --bg-section-alt: #F5F3F7;
+      --max-w-content: 1100px;
+      --max-w-wide: 1200px;
+      --text-muted: #6B6B6B;
     }
 
     /* Reset */
@@ -392,19 +398,6 @@
       }
     }
 
-    .checkmarks {
-      display: none;
-    }
-
-    .checkmark-item {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      gap: 0.8rem;
-      font-size: 1.05rem;
-      font-weight: 500;
-    }
-
     .checkmark-icon {
       color: var(--accent-yellow);
       font-size: 1.3rem;
@@ -494,7 +487,7 @@
 
     /* Dobra 2 - Agitação */
     .agitation {
-      background: var(--bg-white);
+      background: var(--bg-section-alt);
       max-width: 1100px;
       width: 100%;
       margin: 0 auto;
@@ -602,7 +595,7 @@
 
     .alert-subtitle {
       font-size: 1.1rem;
-      color: #555;
+      color: var(--text-muted);
     }
 
     .flow-diagram {
@@ -617,7 +610,7 @@
     }
 
     .flow-node {
-      background: var(--primary-gradient);
+      background: var(--magenta);
       color: var(--text-white);
       width: 140px;
       height: 140px;
@@ -645,7 +638,7 @@
 
     .diagnostic-text {
       text-align: center;
-      color: #555;
+      color: var(--text-muted);
       max-width: 800px;
       margin: 0 auto;
       font-size: 1.05rem;
@@ -654,8 +647,8 @@
 
     /* Dobra 4 - Solução */
     .solution {
-      background: var(--bg-white);
-      max-width: 1000px;
+      background: var(--bg-section-alt);
+      max-width: var(--max-w-content);
       width: 100%;
       margin: 0 auto;
       text-align: center;
@@ -672,7 +665,7 @@
       display: block;
       width: 120px;
       height: 4px;
-      background: var(--primary-gradient);
+      background: var(--magenta);
       border-radius: 2px;
       margin: 1.2rem auto 0;
     }
@@ -680,7 +673,7 @@
     .solution-subtitle {
       font-size: 1.2rem;
       margin: 2.5rem 0;
-      color: #555;
+      color: var(--text-muted);
     }
 
     .benefits {
@@ -717,7 +710,7 @@
     .benefit-text {
       font-size: 1rem;
       font-weight: 500;
-      color: #333;
+      color: var(--text-dark);
     }
 
     /* Dobra 5 - Os 3 Passos */
@@ -759,10 +752,7 @@
     }
 
     .step-number {
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--magenta);
       font-size: 3.5rem;
       font-weight: 800;
       margin-bottom: 1rem;
@@ -778,7 +768,7 @@
     .step-card p {
       font-size: 1rem;
       line-height: 1.75;
-      color: #555;
+      color: var(--text-muted);
       margin-bottom: 0;
     }
 
@@ -789,13 +779,13 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: var(--primary-gradient);
+      background: var(--magenta);
     }
 
     /* Dobra 6 - Entregáveis */
     .deliverables {
-      background: var(--bg-light);
-      max-width: 1300px;
+      background: var(--bg-section-alt);
+      max-width: var(--max-w-wide);
       width: 100%;
       margin: 0 auto;
       padding: 4rem 2rem;
@@ -879,7 +869,7 @@
       color: var(--text-secondary);
       line-height: 1.8;
       margin-bottom: 1.5rem;
-      text-align: justify;
+      text-align: left;
     }
 
     .deliverable-bullets-clean {
@@ -935,8 +925,8 @@
 
     /* Dobra 7 - Para quem é */
     .for-who {
-      background: var(--primary-gradient);
-      color: #FFFFFF;
+      background: var(--bg-white);
+      color: var(--text-dark);
       max-width: 1100px;
       width: 100%;
       margin: 0 auto;
@@ -974,7 +964,7 @@
 
     .for-who-bullets li::before {
       content: '✔';
-      color: var(--accent-yellow);
+      color: var(--magenta);
       font-weight: bold;
       font-size: 1.3rem;
       flex-shrink: 0;
@@ -1063,7 +1053,7 @@
       gap: 1.2rem;
       margin-bottom: 1.2rem;
       font-size: 1.05rem;
-      color: #333;
+      color: var(--text-dark);
     }
 
     .offer-left li::before {
@@ -1096,7 +1086,7 @@
 
     .price-label {
       font-size: 1rem;
-      color: #666;
+      color: var(--text-muted);
       margin-bottom: 2rem;
     }
 
@@ -1113,7 +1103,7 @@
       align-items: center;
       gap: 0.6rem;
       font-size: 0.9rem;
-      color: #555;
+      color: var(--text-muted);
     }
 
     .seal-icon {
@@ -1134,7 +1124,7 @@
     /* Dobra 9 - Fechamento Emocional */
     .emotional-close {
       background: var(--bg-white);
-      max-width: 950px;
+      max-width: var(--max-w-content);
       width: 100%;
       margin: 0 auto;
       text-align: center;
@@ -1144,13 +1134,11 @@
     }
 
     .emotional-close h2 {
-      background: var(--primary-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--magenta);
       font-size: clamp(1.8rem, 5.5vw, 2.8rem);
       margin-bottom: 2rem;
       letter-spacing: -0.3px;
+      font-weight: 800;
     }
 
     .emotional-body {
@@ -1179,7 +1167,7 @@
       gap: 1.2rem;
       margin-bottom: 1.3rem;
       font-size: 1.05rem;
-      color: #333;
+      color: var(--text-dark);
       line-height: 1.65;
     }
 
@@ -1202,7 +1190,7 @@
 
     /* Dobra 10 - Garantia */
     .guarantee {
-      background: var(--bg-light);
+      background: var(--bg-section-alt);
       max-width: 1100px;
       width: 100%;
       margin: 0 auto;
@@ -1242,7 +1230,7 @@
     .guarantee-text p {
       font-size: 1.05rem;
       line-height: 1.8;
-      color: #555;
+      color: var(--text-muted);
     }
 
     @media (max-width: 768px) {
@@ -1259,7 +1247,7 @@
 
     /* Dobra 11 - Bio Lisandra */
     .bio {
-      background: var(--bg-white);
+      background: var(--bg-section-alt);
       max-width: 1100px;
       width: 100%;
       margin: 0 auto;
@@ -1297,14 +1285,14 @@
       display: block;
       width: 70px;
       height: 3px;
-      background: var(--primary-gradient);
+      background: var(--magenta);
       margin-top: 1rem;
     }
 
     .bio-text p {
       font-size: 1.05rem;
       line-height: 1.85;
-      color: #555;
+      color: var(--text-muted);
       margin-bottom: 1.5rem;
       margin-top: 1.5rem;
     }
@@ -1662,7 +1650,7 @@
         <li>Querem recuperar a dignidade, a calma e o controle emocional</li>
         <li>Estão cansadas de viver em um loop de compulsão e arrependimento</li>
       </ul>
-      <div class="for-who-photo" style="background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&h=500&fit=crop'); background-size: cover; background-position: center;" role="img" aria-label="Mulher em momento de paz e autoestima após superar obsessão emocional"></div>
+      <div class="for-who-photo" style="background: linear-gradient(135deg, rgba(139,47,201,0.08), rgba(233,30,140,0.08)); border: 2px solid rgba(233,30,140,0.15);" role="img" aria-label="Mulher em momento de paz e autoestima após superar obsessão emocional"></div>
     </div>
   </section>
 
@@ -1685,28 +1673,28 @@
         </ul>
 
         <div class="offer-right">
-        <p class="offer-original">De R$ 290,00</p>
-        <p class="price-label">por apenas</p>
-        <p class="offer-price">R$ 87,00</p>
-        <p class="price-label">ou em até 3x sem juros</p>
-        <button class="cta-btn" aria-label="Acessar o Protocolo Obsessão Zero por R$ 87 em 3 parcelas">ACESSAR AGORA</button>
+          <p class="offer-original">De R$ 290,00</p>
+          <p class="price-label">por apenas</p>
+          <p class="offer-price">R$ 87,00</p>
+          <p class="price-label">ou em até 3x sem juros</p>
+          <button class="cta-btn" aria-label="Acessar o Protocolo Obsessão Zero por R$ 87 em 3 parcelas">ACESSAR AGORA</button>
 
-        <div class="seals">
-          <div class="seal">
-            <span class="seal-icon">🔒</span>
-            <span>Compra Segura</span>
-          </div>
-          <div class="seal">
-            <span class="seal-icon">🔒</span>
-            <span>Privacidade Protegida</span>
-          </div>
-          <div class="seal">
-            <span class="seal-icon">⭐</span>
-            <span>Satisfação Garantida</span>
+          <div class="seals">
+            <div class="seal">
+              <span class="seal-icon">🔒</span>
+              <span>Compra Segura</span>
+            </div>
+            <div class="seal">
+              <span class="seal-icon">🔒</span>
+              <span>Privacidade Protegida</span>
+            </div>
+            <div class="seal">
+              <span class="seal-icon">⭐</span>
+              <span>Satisfação Garantida</span>
+            </div>
           </div>
         </div>
       </div>
-        </div>
     </div>
   </section>
 
