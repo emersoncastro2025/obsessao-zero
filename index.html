@@ -1338,6 +1338,27 @@
       transform: translateY(-4px);
     }
 
+    .final-cta-mockup-container {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto 3rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: zoomIn 0.8s ease-out 0.2s both;
+    }
+
+    .final-cta-mockup {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform var(--transition-slow);
+    }
+
+    .final-cta-mockup-container:hover .final-cta-mockup {
+      transform: scale(1.02);
+    }
+
     .final-seals {
       display: flex;
       justify-content: center;
@@ -1678,6 +1699,10 @@
   <!-- Dobra 12: CTA Final -->
   <section class="final-cta fade-in">
     <h2>PROTOCOLO OBSESSÃO ZERO</h2>
+
+    <div class="final-cta-mockup-container">
+      <img src="/mockuptodosprodutos.png" alt="Mockup dos produtos e materiais do Protocolo Obsessão Zero" class="final-cta-mockup" loading="lazy">
+    </div>
 
     <div class="final-offer-box">
       <p class="offer-original">De R$ 290,00</p>
