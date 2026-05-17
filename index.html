@@ -795,105 +795,141 @@
     /* Dobra 6 - Entregáveis */
     .deliverables {
       background: var(--bg-light);
-      max-width: 1100px;
+      max-width: 1300px;
       width: 100%;
       margin: 0 auto;
+      padding: 4rem 2rem;
     }
 
     .deliverables h2 {
       font-size: clamp(1.8rem, 5.5vw, 2.8rem);
       text-align: center;
-      margin-bottom: 3.5rem;
+      margin-bottom: 4rem;
+      color: var(--text-dark);
       letter-spacing: -0.3px;
     }
 
-    .deliverable-block {
+    .deliverable-item {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3.5rem;
       align-items: center;
+      margin-bottom: 5rem;
       width: 100%;
-      margin-left: auto;
-      margin-right: auto;
     }
 
-    .deliverable-mockup {
+    .deliverable-item.alternate {
+      grid-template-columns: 1fr 1.2fr;
+    }
+
+    .deliverable-item.alternate .deliverable-image-box {
+      order: 2;
+    }
+
+    .deliverable-item.alternate .deliverable-content {
+      order: 1;
+    }
+
+    .deliverable-image-box {
       border-radius: 16px;
-      height: 350px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-white);
-      font-size: 1rem;
-      text-align: center;
-      padding: 0;
-      box-shadow: 0 10px 40px rgba(233, 30, 140, 0.3);
-      font-weight: 600;
       overflow: hidden;
-      background: transparent;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+      transition: transform var(--transition-normal);
     }
 
-    .deliverable-image {
+    .deliverable-image-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .deliverable-image-clean {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
+      object-fit: cover;
       transition: transform var(--transition-slow);
     }
 
-    .deliverable-mockup:hover .deliverable-image {
+    .deliverable-image-box:hover .deliverable-image-clean {
       transform: scale(1.05);
     }
 
-    .mockup-phone {
-      perspective: 1000px;
-      transform: rotateY(-15deg);
+    .deliverable-content {
+      padding: 0 1rem;
     }
 
-    .mockup-tablet {
-      perspective: 1000px;
-      transform: rotateY(15deg);
+    .deliverable-title-clean {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: var(--text-dark);
+      line-height: 1.3;
+      letter-spacing: -0.5px;
     }
 
-    .deliverable-bullets {
+    .deliverable-title-clean .highlight {
+      color: var(--magenta);
+      display: block;
+      font-weight: 600;
+      font-size: 0.95em;
+    }
+
+    .deliverable-description {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+
+    .deliverable-bullets-clean {
       list-style: none;
+      padding: 0;
     }
 
-    .deliverable-bullets li {
+    .deliverable-bullets-clean li {
       display: flex;
       align-items: flex-start;
       gap: 1rem;
-      margin-bottom: 1.2rem;
-      font-size: 1rem;
-      line-height: 1.65;
-      color: #333;
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
     }
 
-    .deliverable-bullets li::before {
-      content: '✔';
+    .deliverable-bullets-clean li::before {
+      content: '✓';
       color: var(--magenta);
-      font-weight: bold;
-      font-size: 1.3rem;
-      flex-shrink: 0;
-      margin-top: 0.1rem;
-    }
-
-    .deliverable-title {
-      font-size: 1.5rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: var(--text-dark);
-      letter-spacing: -0.2px;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
     }
 
     @media (max-width: 768px) {
-      .deliverable-block {
+      .deliverable-item,
+      .deliverable-item.alternate {
         grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 3.5rem;
       }
 
-      .deliverable-mockup {
-        min-height: 280px;
+      .deliverable-item.alternate .deliverable-image-box,
+      .deliverable-item.alternate .deliverable-content {
+        order: initial;
+      }
+
+      .deliverable-content {
+        padding: 0;
+      }
+
+      .deliverable-title-clean {
+        font-size: 1.4rem;
+      }
+
+      .deliverable-description {
+        text-align: left;
+        font-size: 1rem;
       }
     }
 
@@ -1559,63 +1595,62 @@
   <section class="deliverables fade-in">
     <h2>Agora veja exatamente o que você vai receber</h2>
 
-    <div class="deliverable-block">
-      <div class="deliverable-mockup mockup-phone">
-        <img src="/aula-pratica.png" alt="Aula Prática - Como Parar de Pensar Nele com vídeo e conteúdo escrito" class="deliverable-image" loading="lazy">
+    <div class="deliverable-item">
+      <div class="deliverable-image-box">
+        <img src="/aula-pratica.png" alt="Aula Prática - Como Parar de Pensar Nele com vídeo e conteúdo escrito" class="deliverable-image-clean" loading="lazy">
       </div>
-      <div>
-        <h4 class="deliverable-title">Aula Prática</h4>
-        <ul class="deliverable-bullets">
-          <li>A verdade sobre por que você não consegue parar (não é fraqueza)</li>
+      <div class="deliverable-content">
+        <h3 class="deliverable-title-clean">Aula Prática <span class="highlight">— Como Parar de Pensar Nele</span></h3>
+        <p class="deliverable-description">Você vai receber vídeos gravados por mim mostrando exatamente os 3 passos do protocolo. Além disso, todo conteúdo também em PDF para você ler quando quiser, na velocidade que conseguir processar.</p>
+        <ul class="deliverable-bullets-clean">
+          <li>A verdade sobre por que você não consegue parar</li>
           <li>Os 3 passos do protocolo passo a passo</li>
           <li>Técnicas de respiração e ancoramento emocional</li>
-          <li>Como usar quando bate a vontade de madrugada</li>
-          <li>Bonus: scripts para bloquear gatilhos no seu celular</li>
         </ul>
       </div>
     </div>
 
-    <div class="deliverable-block">
-      <div class="deliverable-mockup mockup-tablet">
-        <img src="/protocolo-obsessao-zero-box.png" alt="Protocolo Obsessão Zero - Caixa com método emocional completo" class="deliverable-image" loading="lazy">
+    <div class="deliverable-item alternate">
+      <div class="deliverable-image-box">
+        <img src="/protocolo-obsessao-zero-box.png" alt="Protocolo Obsessão Zero - Caixa com método emocional completo" class="deliverable-image-clean" loading="lazy">
       </div>
-      <div>
-        <h4 class="deliverable-title">Protocolo Obsessão Zero</h4>
-        <ul class="deliverable-bullets">
-          <li>Método prático e emocional em um só lugar</li>
-          <li>Acesso imediato a todo o conteúdo</li>
+      <div class="deliverable-content">
+        <h3 class="deliverable-title-clean">Protocolo Obsessão Zero <span class="highlight">— Seu Método Completo</span></h3>
+        <p class="deliverable-description">Um guia físico e digital que você pode acessar a qualquer momento. Sempre que bater aquela vontade incontrolável, você tem o protocolo à mão para aplicar no exato momento da crise.</p>
+        <ul class="deliverable-bullets-clean">
+          <li>Acesso imediato a todo o conteúdo em digital e físico</li>
+          <li>Método prático que você pode aplicar agora</li>
           <li>Moldura bonita para lembrete visual diário</li>
-          <li>Tudo que você precisa para começar hoje</li>
         </ul>
       </div>
     </div>
 
-    <div class="deliverable-block">
-      <div class="deliverable-mockup mockup-tablet">
-        <img src="/folha-exercicios.png" alt="Folha de Exercícios Emocionais - Material imprimível com exercícios práticos" class="deliverable-image" loading="lazy">
+    <div class="deliverable-item">
+      <div class="deliverable-image-box">
+        <img src="/folha-exercicios.png" alt="Folha de Exercícios Emocionais - Material imprimível com exercícios práticos" class="deliverable-image-clean" loading="lazy">
       </div>
-      <div>
-        <h4 class="deliverable-title">Folha de Exercícios</h4>
-        <ul class="deliverable-bullets">
+      <div class="deliverable-content">
+        <h3 class="deliverable-title-clean">Folha de Exercícios <span class="highlight">— Sua Jornada Mapeada</span></h3>
+        <p class="deliverable-description">Você não vai ficar sozinha nesse processo. A folha de exercícios é seu mapa. Ela vai te ajudar a identificar seus gatilhos pessoais, rastrear seus padrões de compulsão e criar seu plano de ação para os próximos 30 dias.</p>
+        <ul class="deliverable-bullets-clean">
           <li>Mapeamento dos seus gatilhos pessoais</li>
-          <li>Tabela para rastrear compulsões (você vai se surpreender com o padrão)</li>
-          <li>Exercícios de ressignificação emocional</li>
+          <li>Tabela prática para rastrear compulsões</li>
           <li>Plano de ação para os próximos 30 dias</li>
         </ul>
       </div>
     </div>
 
-    <div class="deliverable-block">
-      <div class="deliverable-mockup">
-        <img src="/protocolo-anti-recaida.png" alt="Protocolo Prático Anti-Recaída - Livro com método passo a passo" class="deliverable-image" loading="lazy">
+    <div class="deliverable-item alternate">
+      <div class="deliverable-image-box">
+        <img src="/protocolo-anti-recaida.png" alt="Protocolo Prático Anti-Recaída - Livro com método passo a passo" class="deliverable-image-clean" loading="lazy">
       </div>
-      <div>
-        <h4 class="deliverable-title">Protocolo Anti-Recaída</h4>
-        <ul class="deliverable-bullets">
-          <li>O que fazer quando a recaída bate (sem culpa, sem julgamento)</li>
+      <div class="deliverable-content">
+        <h3 class="deliverable-title-clean">Protocolo Anti-Recaída <span class="highlight">— Seu Escudo Emocional</span></h3>
+        <p class="deliverable-description">Porque a recaída é parte do processo. Este protocolo te ensina exatamente o que fazer quando (não se) ela bater. Sem culpa, sem julgamento. Apenas ferramentas práticas para você voltar ao controle rapidinho.</p>
+        <ul class="deliverable-bullets-clean">
+          <li>O que fazer quando a recaída bate</li>
           <li>Checklist de retorno ao protocolo após deslize</li>
           <li>Frases de ancoragem para momentos críticos</li>
-          <li>Contato direto comigo para casos emergenciais (durante 30 dias)</li>
         </ul>
       </div>
     </div>
