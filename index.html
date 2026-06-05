@@ -7,25 +7,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* Root Variables */
+    /* ============================================
+       ROOT VARIABLES — Design System
+       ============================================ */
     :root {
-      /* Colors - Inspirado no design de Lisandra */
-      --primary-gradient: linear-gradient(135deg, #8B2FC9 0%, #E91E8C 50%, #C62828 100%);
-      --cta-gradient: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+      /* Colors — Refined palette */
+      --primary-gradient: linear-gradient(135deg, #8B2FC9 0%, #D6249F 50%, #C62828 100%);
+      --cta-gradient: linear-gradient(135deg, #34C759 0%, #30B350 100%);
       --accent-yellow: #FFD600;
-      --text-dark: #2C2C2C;
+      --text-dark: #1A1A2E;
       --text-white: #FFFFFF;
-      --text-secondary: #6B6B6B;
+      --text-secondary: #555770;
+      --text-muted: #7C7C8A;
       --text-light: #999999;
       --bg-white: #FFFFFF;
-      --bg-light: #F8F6FF;
+      --bg-light: #FAFAFE;
       --bg-pale: #FAF9F7;
       --bg-dark-light: #F5F5F5;
+      --bg-section-alt: #F7F5FB;
       --seal-gold: #C9A84C;
-      --magenta: #E91E8C;
+      --magenta: #D6249F;
       --purple: #8B2FC9;
       --red: #C62828;
-      --green: #4CAF50;
+      --green: #34C759;
 
       /* Fonts */
       --font-display: 'Poppins', sans-serif;
@@ -48,32 +52,33 @@
       --font-size-xl: 1.25rem;
       --font-size-2xl: 1.5rem;
 
-      /* Transitions */
-      --transition-fast: 0.2s ease;
-      --transition-normal: 0.3s ease;
-      --transition-slow: 0.5s ease;
+      /* Transitions — Polished easing */
+      --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 
       /* Border Radius */
-      --radius-sm: 6px;
+      --radius-sm: 8px;
       --radius-md: 12px;
-      --radius-lg: 16px;
+      --radius-lg: 20px;
+      --radius-xl: 24px;
       --radius-full: 30px;
 
-      /* Shadows - Suaves e Refinadas */
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
-      --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.15);
+      /* Shadows — Minimal, refined */
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.06);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.06), 0 5px 10px rgba(0,0,0,0.04);
+      --shadow-xl: 0 20px 50px rgba(0,0,0,0.08), 0 10px 20px rgba(0,0,0,0.04);
 
-      /* Design System — Adicionados na refatoração */
-      --bg-section-alt: #F5F3F7;
+      /* Layout */
       --max-w-content: 1100px;
       --max-w-wide: 1200px;
-      --text-muted: #6B6B6B;
     }
 
-    /* Reset */
-    * {
+    /* ============================================
+       RESET
+       ============================================ */
+    *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -92,35 +97,46 @@
       font-family: var(--font-body);
       color: var(--text-dark);
       overflow-x: hidden;
-      line-height: 1.6;
+      line-height: 1.7;
       border: none !important;
       outline: none !important;
       width: 100%;
       max-width: 100%;
       margin: 0;
       padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      background: var(--bg-white);
     }
 
-    /* Typography */
+    /* ============================================
+       TYPOGRAPHY — Refined hierarchy
+       ============================================ */
     h1, h2, h3, h4, h5, h6 {
       font-family: var(--font-display);
       font-weight: 700;
       line-height: 1.2;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+      color: var(--text-dark);
     }
 
     h1 {
       font-size: clamp(2.2rem, 9vw, 4.2rem);
       font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.04em;
     }
 
     h2 {
       font-size: clamp(1.8rem, 6vw, 3rem);
       margin-bottom: var(--spacing-lg);
+      line-height: 1.25;
     }
 
     h3 {
       font-size: clamp(1.4rem, 4vw, 2rem);
+      line-height: 1.3;
     }
 
     p {
@@ -130,25 +146,48 @@
     }
 
     .highlight-yellow {
-      color: var(--accent-yellow);
+      color: var(--magenta);
       font-weight: 800;
     }
 
-    /* Header */
+    /* ============================================
+       SECTION BADGE — Pill labels
+       ============================================ */
+    .section-badge {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: var(--font-body);
+      margin-bottom: 1.5rem;
+      background: rgba(214, 36, 159, 0.08);
+      color: var(--magenta);
+      border: 1px solid rgba(214, 36, 159, 0.15);
+    }
+
+
+    /* ============================================
+       HEADER — Glassmorphism polish
+       ============================================ */
     header {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      background: rgba(255, 255, 255, 0.98);
-      padding: 1.2rem 2rem;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
       transform: translateY(-100%);
-      transition: transform 0.3s ease;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     header.visible {
@@ -156,9 +195,9 @@
     }
 
     .logo {
-      height: 45px;
+      height: 42px;
       width: auto;
-      max-width: 180px;
+      max-width: 220px;
       display: flex;
       align-items: center;
     }
@@ -174,7 +213,7 @@
       background: var(--cta-gradient);
       color: var(--text-white);
       border: none;
-      padding: 0.8rem 1.8rem;
+      padding: 0.75rem 1.8rem;
       border-radius: var(--radius-full);
       font-size: var(--font-size-sm);
       font-weight: 700;
@@ -182,48 +221,105 @@
       transition: all var(--transition-normal);
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      box-shadow: 0 4px 15px rgba(233, 30, 140, 0.3);
+      box-shadow: 0 4px 15px rgba(52, 199, 89, 0.3);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
     }
 
     .header-cta:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(233, 30, 140, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(52, 199, 89, 0.4);
     }
 
     .header-cta:active {
-      transform: translateY(-1px);
+      transform: translateY(0);
     }
 
-    /* Sections */
+    /* ============================================
+       SECTIONS — Consistent spacing & rhythm
+       ============================================ */
     section {
       min-height: auto;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: var(--spacing-3xl) var(--spacing-lg);
+      padding: 7rem 2rem;
       position: relative;
       width: 100%;
       max-width: 100%;
       overflow-x: hidden;
     }
 
-    @media (max-width: 768px) {
-      section {
-        padding: var(--spacing-2xl) var(--spacing-md);
-      }
-    }
+    /* Alternating section backgrounds */
+    .agitation { background: var(--bg-section-alt); }
+    .diagnostic { background: var(--bg-white); }
+    .solution { background: var(--bg-section-alt); }
+    .steps { background: var(--bg-white); }
+    .deliverables { background: var(--bg-section-alt); }
+    .for-who { background: var(--bg-white); }
+    .recap-offer { background: var(--bg-section-alt); }
+    .emotional-close { background: var(--bg-white); }
+    .guarantee { background: var(--bg-section-alt); }
+    .bio { background: var(--bg-white); }
 
-    @media (max-width: 480px) {
-      section {
-        padding: var(--spacing-xl) var(--spacing-sm);
-      }
-    }
-
+    /* Fade-in system — Hidden by default, revealed by JS */
     section.fade-in {
       opacity: 0;
-      animation: fadeInUp 0.8s ease forwards;
+      transform: translateY(30px);
+      transition: none;
     }
+
+    section.fade-in.is-visible {
+      animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Staggered children animations */
+    .is-visible .step-card,
+    .is-visible .benefit,
+    .is-visible .deliverable-item,
+    .is-visible .problem-item,
+    .is-visible .for-who-bullets li,
+    .is-visible .consequences li,
+    .is-visible .flow-node,
+    .is-visible .bento-card {
+      opacity: 0;
+      animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .is-visible .step-card:nth-child(1),
+    .is-visible .benefit:nth-child(1),
+    .is-visible .deliverable-item:nth-child(1),
+    .is-visible .problem-item:nth-child(1),
+    .is-visible .for-who-bullets li:nth-child(1),
+    .is-visible .consequences li:nth-child(1),
+    .is-visible .bento-card:nth-child(1) { animation-delay: 0.1s; }
+
+    .is-visible .step-card:nth-child(2),
+    .is-visible .benefit:nth-child(2),
+    .is-visible .deliverable-item:nth-child(2),
+    .is-visible .problem-item:nth-child(2),
+    .is-visible .for-who-bullets li:nth-child(2),
+    .is-visible .consequences li:nth-child(2),
+    .is-visible .bento-card:nth-child(2) { animation-delay: 0.2s; }
+
+    .is-visible .step-card:nth-child(3),
+    .is-visible .benefit:nth-child(3),
+    .is-visible .deliverable-item:nth-child(3),
+    .is-visible .problem-item:nth-child(3),
+    .is-visible .for-who-bullets li:nth-child(3),
+    .is-visible .consequences li:nth-child(3),
+    .is-visible .bento-card:nth-child(3) { animation-delay: 0.3s; }
+
+    .is-visible .deliverable-item:nth-child(4),
+    .is-visible .problem-item:nth-child(4),
+    .is-visible .for-who-bullets li:nth-child(4),
+    .is-visible .consequences li:nth-child(4),
+    .is-visible .bento-card:nth-child(4) { animation-delay: 0.4s; }
+
+    .is-visible .for-who-bullets li:nth-child(5),
+    .is-visible .consequences li:nth-child(5) { animation-delay: 0.5s; }
+
+    .is-visible .for-who-bullets li:nth-child(6) { animation-delay: 0.6s; }
 
     @keyframes fadeInUp {
       from {
@@ -233,148 +329,6 @@
       to {
         opacity: 1;
         transform: translateY(0);
-      }
-    }
-
-    /* Hero - Dobra 1 */
-    .hero {
-      background: linear-gradient(135deg, rgba(139, 47, 201, 0.92), rgba(233, 30, 140, 0.90), rgba(198, 40, 40, 0.90)),
-                  radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1), transparent 50%),
-                  radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08), transparent 50%);
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: var(--text-white);
-      text-align: center;
-      min-height: 100vh;
-      padding-top: var(--spacing-3xl);
-      padding-bottom: var(--spacing-2xl);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.15) 100%);
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 120px;
-      background: linear-gradient(to bottom, transparent 0%, rgba(248, 246, 255, 0.3) 100%);
-      pointer-events: none;
-    }
-
-    .badge {
-      display: inline-block;
-      margin-bottom: var(--spacing-xl);
-      border: none;
-      background: none;
-      padding: 0;
-      max-width: 200px;
-      width: 100%;
-    }
-
-    .badge img {
-      width: 100%;
-      height: auto;
-      max-width: 200px;
-      display: block;
-      transition: transform var(--transition-normal);
-    }
-
-    .badge:hover img {
-      transform: scale(1.05);
-    }
-
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 7vw, 3.2rem);
-      font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: var(--spacing-md);
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      letter-spacing: -0.03em;
-      animation: slideInDown 0.8s ease-out;
-    }
-
-    .hero-subtitle-group {
-      margin: var(--spacing-md) auto var(--spacing-lg);
-      animation: fadeIn 0.8s ease-out 0.2s both;
-    }
-
-    .hero .subtitle {
-      font-size: clamp(1.05rem, 3.5vw, 1.35rem);
-      max-width: 750px;
-      margin-left: auto;
-      margin-right: auto;
-      font-weight: 400;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.9);
-      margin: 0;
-    }
-
-    .hero-benefits-top {
-      display: flex;
-      justify-content: center;
-      gap: var(--spacing-lg);
-      flex-wrap: wrap;
-      margin: var(--spacing-lg) auto;
-      max-width: 1000px;
-      width: 100%;
-      animation: fadeIn 0.8s ease-out 0.3s both;
-    }
-
-    .hero-benefit-item {
-      background: rgba(255, 255, 255, 0.15);
-      color: var(--text-white);
-      padding: var(--spacing-md) var(--spacing-lg);
-      border-radius: var(--radius-full);
-      font-size: var(--font-size-lg);
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-md);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      transition: all var(--transition-normal);
-    }
-
-    .hero-benefit-item:hover {
-      background: rgba(255, 255, 255, 0.2);
-      border-color: rgba(255, 255, 255, 0.3);
-      transform: translateY(-2px);
-    }
-
-    .hero-benefit-item::before {
-      content: '✔';
-      color: var(--accent-yellow);
-      font-weight: 700;
-      font-size: 1.4rem;
-    }
-
-    @media (max-width: 768px) {
-      .hero-benefits-top {
-        flex-direction: column;
-        gap: var(--spacing-md);
-      }
-
-      .hero-benefit-item {
-        font-size: var(--font-size-base);
-        padding: var(--spacing-sm) var(--spacing-md);
-      }
-
-      .hero-benefit-item::before {
-        font-size: 1.2rem;
       }
     }
 
@@ -390,82 +344,8 @@
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
-    .checkmark-icon {
-      color: var(--accent-yellow);
-      font-size: 1.3rem;
-      font-weight: bold;
-    }
-
-    .cta-btn {
-      background: var(--cta-gradient);
-      color: var(--text-white);
-      border: none;
-      padding: 1.4rem 3.2rem;
-      border-radius: var(--radius-full);
-      font-size: var(--font-size-lg);
-      font-weight: 700;
-      cursor: pointer;
-      transition: all var(--transition-normal);
-      text-transform: uppercase;
-      letter-spacing: 1.2px;
-      margin-top: var(--spacing-lg);
-      box-shadow: 0 8px 24px rgba(76, 175, 80, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.2);
-      transition: left var(--transition-normal);
-    }
-
-    .cta-btn:hover::before {
-      left: 100%;
-    }
-
-    .cta-btn:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 40px rgba(76, 175, 80, 0.4);
-    }
-
-    .cta-btn:active {
-      transform: translateY(-2px);
-    }
-
-    .hero-image-container {
-      max-width: 950px;
-      width: 100%;
-      margin: var(--spacing-lg) auto var(--spacing-lg);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-      animation: zoomIn 0.8s ease-out 0.3s both;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .hero-full-image {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform var(--transition-slow);
-    }
-
-    .hero-image-container:hover .hero-full-image {
-      transform: scale(1.015);
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @keyframes zoomIn {
@@ -479,26 +359,333 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .hero-image-container {
-        margin-top: 2rem;
+    /* CTA Pulse glow animation */
+    @keyframes ctaPulse {
+      0%, 100% {
+        box-shadow: 0 8px 24px rgba(52, 199, 89, 0.3);
+      }
+      50% {
+        box-shadow: 0 8px 40px rgba(52, 199, 89, 0.55), 0 0 60px rgba(52, 199, 89, 0.15);
       }
     }
 
-    /* Dobra 2 - Agitação */
-    .agitation {
-      background: var(--bg-section-alt);
-      max-width: 1100px;
-      width: 100%;
-      margin: 0 auto;
+    @keyframes ctaPulseYellow {
+      0%, 100% {
+        box-shadow: 0 8px 24px rgba(255, 214, 0, 0.3);
+      }
+      50% {
+        box-shadow: 0 8px 40px rgba(255, 214, 0, 0.5), 0 0 60px rgba(255, 214, 0, 0.15);
+      }
+    }
+
+    /* ============================================
+       HERO — Dobra 1 (Clean/Light redesign)
+       ============================================ */
+    .hero {
+      background: var(--bg-white);
+      color: var(--text-dark);
       text-align: center;
+      min-height: 100vh;
+      padding-top: 5rem;
+      padding-bottom: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Very subtle gradient wash at bottom */
+    .hero::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(to top, rgba(214, 36, 159, 0.03) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Soft radial accent */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(circle, rgba(139, 47, 201, 0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Hero is always visible (first section) */
+    .hero.fade-in {
+      opacity: 1;
+      transform: none;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: var(--spacing-lg);
+      border: none;
+      background: none;
+      padding: 0;
+      max-width: 160px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge img {
+      width: 100%;
+      height: auto;
+      max-width: 160px;
+      display: block;
+      transition: transform var(--transition-normal);
+    }
+
+    .badge:hover img {
+      transform: scale(1.05);
+    }
+
+    .hero .section-badge {
+      margin-bottom: 2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero .section-badge img {
+      height: 20px;
+      width: auto;
+      display: block;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 7vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: var(--spacing-lg);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      letter-spacing: -0.03em;
+      animation: slideInDown 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      z-index: 1;
+      color: var(--text-dark);
+    }
+
+    .hero-subtitle-group {
+      margin: var(--spacing-md) auto var(--spacing-xl);
+      animation: fadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero .subtitle {
+      font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    .hero-benefits-top {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+      margin: var(--spacing-xl) auto;
+      max-width: 1000px;
+      width: 100%;
+      animation: fadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-benefit-item {
+      background: rgba(214, 36, 159, 0.05);
+      color: var(--text-dark);
+      padding: var(--spacing-sm) var(--spacing-lg);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-base);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      border: 1px solid rgba(214, 36, 159, 0.1);
+      transition: all var(--transition-normal);
+    }
+
+    .hero-benefit-item:hover {
+      background: rgba(214, 36, 159, 0.09);
+      border-color: rgba(214, 36, 159, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .hero-benefit-item::before {
+      content: '✔';
+      color: var(--magenta);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .checkmark-icon {
+      color: var(--magenta);
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    /* Hero CTA group */
+    .hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-xl);
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+    }
+
+    .cta-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--magenta);
+      border: 2px solid var(--magenta);
+      padding: 1rem 2.5rem;
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-base);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      letter-spacing: 0.5px;
+      font-family: var(--font-body);
+    }
+
+    .cta-outline:hover {
+      background: var(--magenta);
+      color: var(--text-white);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(214, 36, 159, 0.25);
+    }
+
+    /* Trust badges inline */
+    .hero-trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-lg);
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+    }
+
+    .hero-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: var(--font-size-sm);
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .hero-trust-item span:first-child {
+      font-size: 1.1rem;
+    }
+
+    /* CTA Button — Primary (Green) */
+    .cta-btn {
+      background: var(--cta-gradient);
+      color: var(--text-white);
+      border: none;
+      padding: 1.4rem 3.2rem;
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all var(--transition-normal);
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      margin-top: var(--spacing-lg);
+      box-shadow: 0 8px 24px rgba(52, 199, 89, 0.3);
+      position: relative;
+      overflow: hidden;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+      animation: ctaPulse 3s ease-in-out infinite;
+      min-height: 56px;
+    }
+
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cta-btn:hover::before {
+      left: 100%;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(52, 199, 89, 0.45);
+      animation: none;
+    }
+
+    .cta-btn:active {
+      transform: translateY(-1px);
+      animation: none;
+    }
+
+    .hero-image-container {
+      max-width: 950px;
+      width: 100%;
+      margin: var(--spacing-2xl) auto 0;
+      animation: zoomIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-full-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform var(--transition-slow);
+    }
+
+    .hero-image-container:hover .hero-full-image {
+      transform: scale(1.015);
+    }
+
+    /* ============================================
+       AGITATION — Dobra 2
+       ============================================ */
+    .agitation {
+      max-width: 100%;
+      width: 100%;
+      text-align: center;
+    }
+
+    .agitation-inner {
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
     .agitation h2 {
       font-size: clamp(1.8rem, 6vw, 3rem);
-      margin-bottom: var(--spacing-2xl);
-      line-height: 1.3;
-      letter-spacing: -0.3px;
+      margin-bottom: 2.5rem;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
       max-width: 900px;
       margin-left: auto;
       margin-right: auto;
@@ -506,7 +693,7 @@
 
     .agitation-text {
       font-size: var(--font-size-lg);
-      line-height: 1.85;
+      line-height: 1.9;
       margin-bottom: var(--spacing-2xl);
       color: var(--text-secondary);
       max-width: 800px;
@@ -527,6 +714,7 @@
       margin: var(--spacing-2xl) auto;
       display: block;
       height: auto;
+      border-radius: var(--radius-lg);
     }
 
     .problem-item {
@@ -535,7 +723,7 @@
       gap: var(--spacing-lg);
       margin-bottom: var(--spacing-lg);
       padding-bottom: var(--spacing-lg);
-      border-bottom: 1px solid #f0f0f0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
     .problem-item:last-child {
@@ -565,23 +753,29 @@
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
+      line-height: 1.6;
     }
 
-    /* Dobra 3 - Diagnóstico */
+    /* ============================================
+       DIAGNOSTIC — Dobra 3
+       ============================================ */
     .diagnostic {
-      background: var(--bg-light);
-      max-width: 1100px;
+      max-width: 100%;
       width: 100%;
-      margin: 0 auto;
       text-align: center;
     }
 
+    .diagnostic-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
     .alert-box {
-      border: 2px solid var(--magenta);
+      border: 2px solid rgba(214, 36, 159, 0.2);
       border-radius: var(--radius-lg);
-      padding: var(--spacing-2xl);
-      background: rgba(233, 30, 140, 0.05);
-      margin: 0 auto var(--spacing-2xl);
+      padding: var(--spacing-2xl) var(--spacing-xl);
+      background: linear-gradient(135deg, rgba(214, 36, 159, 0.04) 0%, rgba(139, 47, 201, 0.04) 100%);
+      margin: 0 auto 2.5rem;
       max-width: 700px;
       width: 100%;
       text-align: center;
@@ -590,7 +784,7 @@
     .alert-box h3 {
       font-size: 1.7rem;
       margin-bottom: 0.8rem;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.03em;
     }
 
     .alert-subtitle {
@@ -598,42 +792,80 @@
       color: var(--text-muted);
     }
 
-    .flow-diagram {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: var(--spacing-lg);
-      flex-wrap: wrap;
-      margin: var(--spacing-2xl) auto;
-      max-width: 900px;
+    /* Bento Grid — Diagnostic cards */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2.5rem auto;
+      max-width: 700px;
       width: 100%;
     }
 
-    .flow-node {
-      background: var(--magenta);
-      color: var(--text-white);
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      display: flex;
+    .bento-card {
+      background: linear-gradient(135deg, rgba(214, 36, 159, 0.04) 0%, rgba(139, 47, 201, 0.04) 100%);
+      border: 1px solid rgba(214, 36, 159, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all var(--transition-normal);
+      position: relative;
+    }
+
+    .bento-card:hover {
+      border-color: rgba(214, 36, 159, 0.2);
+      transform: translateY(-3px);
+      background: linear-gradient(135deg, rgba(214, 36, 159, 0.06) 0%, rgba(139, 47, 201, 0.06) 100%);
+    }
+
+    .bento-number {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--magenta) 0%, var(--purple) 100%);
+      color: var(--text-white);
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      font-family: var(--font-display);
+    }
+
+    .bento-label {
+      font-size: 1.15rem;
       font-weight: 700;
-      font-size: 1.1rem;
-      box-shadow: var(--shadow-lg);
-      transition: all var(--transition-normal);
+      color: var(--text-dark);
+      font-family: var(--font-display);
+      letter-spacing: -0.02em;
     }
 
-    .flow-node:hover {
-      transform: scale(1.05);
-      box-shadow: var(--shadow-xl);
-    }
-
-    .flow-arrow {
-      font-size: 1.8rem;
+    .bento-arrow {
+      position: absolute;
       color: var(--magenta);
+      font-size: 1.4rem;
+      opacity: 0.5;
       font-weight: bold;
+    }
+
+    /* Arrow positioning */
+    .bento-card:nth-child(1) .bento-arrow {
+      right: -1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .bento-card:nth-child(2) .bento-arrow {
+      bottom: -1.1rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .bento-card:nth-child(3) .bento-arrow {
+      right: -1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     .diagnostic-text {
@@ -642,32 +874,31 @@
       max-width: 800px;
       margin: 0 auto;
       font-size: 1.05rem;
-      line-height: 1.7;
+      line-height: 1.75;
     }
 
-    /* Dobra 4 - Solução */
+    /* ============================================
+       SOLUTION — Dobra 4
+       ============================================ */
     .solution {
-      background: var(--bg-section-alt);
-      max-width: var(--max-w-content);
+      max-width: 100%;
       width: 100%;
-      margin: 0 auto;
       text-align: center;
+    }
+
+    .solution-inner {
+      max-width: var(--max-w-content);
+      margin: 0 auto;
     }
 
     .solution h2 {
       font-size: clamp(1.8rem, 5.5vw, 3rem);
       margin-bottom: 1rem;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.03em;
     }
 
-    .solution h2::after {
-      content: '';
-      display: block;
-      width: 120px;
-      height: 4px;
-      background: var(--magenta);
-      border-radius: 2px;
-      margin: 1.2rem auto 0;
+    .solution h2 .highlight-magenta {
+      color: var(--magenta);
     }
 
     .solution-subtitle {
@@ -691,33 +922,45 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.8rem;
+      gap: 1rem;
     }
 
     .benefit-icon {
-      background: var(--magenta);
+      background: linear-gradient(135deg, var(--magenta) 0%, var(--purple) 100%);
       color: var(--text-white);
-      width: 55px;
-      height: 55px;
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.6rem;
       font-weight: bold;
+      box-shadow: 0 4px 15px rgba(214, 36, 159, 0.15);
+      transition: all var(--transition-normal);
+    }
+
+    .benefit:hover .benefit-icon {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(214, 36, 159, 0.25);
     }
 
     .benefit-text {
       font-size: 1rem;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--text-dark);
     }
 
-    /* Dobra 5 - Os 3 Passos */
+    /* ============================================
+       STEPS — Dobra 5 (Redesigned with numbered circles)
+       ============================================ */
     .steps {
-      background: var(--bg-white);
-      max-width: 1100px;
+      max-width: 100%;
       width: 100%;
+    }
+
+    .steps-inner {
+      max-width: 1100px;
       margin: 0 auto;
     }
 
@@ -725,44 +968,70 @@
       font-size: clamp(1.8rem, 5.5vw, 2.8rem);
       text-align: center;
       margin-bottom: 3.5rem;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.03em;
     }
 
     .steps-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
+      gap: 2rem;
       width: 100%;
       margin: 0 auto;
     }
 
     .step-card {
-      background: var(--bg-white);
-      border-radius: 12px;
-      padding: 2.5rem;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: linear-gradient(135deg, rgba(214, 36, 159, 0.03) 0%, rgba(139, 47, 201, 0.03) 100%);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
     }
 
     .step-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 35px rgba(233, 30, 140, 0.15);
+      transform: translateY(-4px);
+      border-color: rgba(214, 36, 159, 0.15);
+      background: linear-gradient(135deg, rgba(214, 36, 159, 0.05) 0%, rgba(139, 47, 201, 0.05) 100%);
     }
 
-    .step-number {
-      color: var(--magenta);
-      font-size: 3.5rem;
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-number-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--magenta) 0%, var(--purple) 100%);
+      color: var(--text-white);
+      font-size: 1.1rem;
       font-weight: 800;
-      margin-bottom: 1rem;
+      font-family: var(--font-display);
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(214, 36, 159, 0.2);
+    }
+
+    .step-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--magenta);
+      font-family: var(--font-body);
     }
 
     .step-card h3 {
       font-size: 1.45rem;
       margin-bottom: 1.2rem;
       color: var(--text-dark);
-      letter-spacing: -0.2px;
+      letter-spacing: -0.02em;
     }
 
     .step-card p {
@@ -778,17 +1047,29 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 4px;
-      background: var(--magenta);
+      height: 3px;
+      background: linear-gradient(90deg, var(--magenta) 0%, var(--purple) 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Dobra 6 - Entregáveis */
+    .step-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* ============================================
+       DELIVERABLES — Dobra 6
+       ============================================ */
     .deliverables {
-      background: var(--bg-section-alt);
-      max-width: var(--max-w-wide);
+      max-width: 100%;
       width: 100%;
+      padding: 7rem 2rem;
+    }
+
+    .deliverables-inner {
+      max-width: var(--max-w-wide);
       margin: 0 auto;
-      padding: 4rem 2rem;
     }
 
     .deliverables h2 {
@@ -796,7 +1077,7 @@
       text-align: center;
       margin-bottom: 4rem;
       color: var(--text-dark);
-      letter-spacing: -0.3px;
+      letter-spacing: -0.03em;
     }
 
     .deliverable-item {
@@ -821,15 +1102,15 @@
     }
 
     .deliverable-image-box {
-      border-radius: 16px;
+      border-radius: var(--radius-lg);
       overflow: hidden;
-      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
-      transition: transform var(--transition-normal);
+      transition: all var(--transition-normal);
+      border: 1px solid rgba(0,0,0,0.06);
     }
 
     .deliverable-image-box:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
     }
 
     .deliverable-image-clean {
@@ -837,11 +1118,11 @@
       height: auto;
       display: block;
       object-fit: cover;
-      transition: transform var(--transition-slow);
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .deliverable-image-box:hover .deliverable-image-clean {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
 
     .deliverable-content {
@@ -854,7 +1135,7 @@
       margin-bottom: 1.2rem;
       color: var(--text-dark);
       line-height: 1.3;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.03em;
     }
 
     .deliverable-title-clean .highlight {
@@ -867,7 +1148,7 @@
     .deliverable-description {
       font-size: 1.05rem;
       color: var(--text-secondary);
-      line-height: 1.8;
+      line-height: 1.85;
       margin-bottom: 1.5rem;
       text-align: left;
     }
@@ -881,10 +1162,11 @@
       display: flex;
       align-items: flex-start;
       gap: 1rem;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.9rem;
       font-size: 0.95rem;
-      line-height: 1.6;
+      line-height: 1.65;
       color: var(--text-secondary);
+      padding: 0.4rem 0;
     }
 
     .deliverable-bullets-clean li::before {
@@ -893,10 +1175,725 @@
       font-weight: 700;
       font-size: 1.1rem;
       flex-shrink: 0;
-      margin-top: 0.2rem;
+      margin-top: 0.1rem;
     }
 
+    /* ============================================
+       FOR-WHO — Dobra 7
+       ============================================ */
+    .for-who {
+      color: var(--text-dark);
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .for-who-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .for-who h2 {
+      font-size: clamp(1.8rem, 5.5vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 3rem;
+      letter-spacing: -0.03em;
+    }
+
+    .for-who-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      margin: 0 auto;
+      max-width: 750px;
+    }
+
+    .for-who-bullets {
+      list-style: none;
+      width: 100%;
+    }
+
+    .for-who-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius-lg);
+      transition: all var(--transition-normal);
+      background: rgba(214, 36, 159, 0.03);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .for-who-bullets li:hover {
+      background: rgba(214, 36, 159, 0.06);
+      border-color: rgba(214, 36, 159, 0.1);
+      transform: translateX(4px);
+    }
+
+    .for-who-bullets li::before {
+      content: '✔';
+      color: var(--text-white);
+      background: linear-gradient(135deg, var(--magenta) 0%, var(--purple) 100%);
+      font-weight: bold;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    /* Hide the empty placeholder photo */
+    .for-who-photo {
+      display: none;
+    }
+
+    /* ============================================
+       RECAP-OFFER — Dobra 8
+       ============================================ */
+    .recap-offer {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .recap-offer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .recap-offer h2 {
+      font-size: clamp(1.8rem, 5.5vw, 2.8rem);
+      text-align: center;
+      margin-bottom: 3rem;
+      letter-spacing: -0.03em;
+    }
+
+    .offer-box {
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-2xl);
+      background: var(--bg-white);
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: var(--spacing-2xl);
+      align-items: center;
+      transition: all var(--transition-normal);
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .offer-mockup {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      object-fit: contain;
+    }
+
+    .offer-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xl);
+    }
+
+    .offer-box:hover {
+      border-color: rgba(214, 36, 159, 0.1);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .offer-left {
+      list-style: none;
+      padding-bottom: var(--spacing-lg);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .offer-left li {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+      color: var(--text-dark);
+      line-height: 1.5;
+    }
+
+    .offer-left li:last-child {
+      margin-bottom: 0;
+    }
+
+    .offer-left li::before {
+      content: '✔';
+      color: var(--magenta);
+      font-weight: bold;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .offer-right {
+      text-align: center;
+    }
+
+    .offer-original {
+      font-size: 1.05rem;
+      text-decoration: none;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .offer-original::after {
+      content: '';
+      position: absolute;
+      left: -4px;
+      right: -4px;
+      top: 50%;
+      height: 2px;
+      background: var(--red);
+      opacity: 0.6;
+      transform: rotate(-3deg);
+    }
+
+    .offer-price {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin: 0.8rem 0;
+      font-family: var(--font-display);
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+    }
+
+    .price-label {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .seals {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .seal {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-full);
+      background: rgba(0,0,0,0.02);
+    }
+
+    .seal-icon {
+      font-size: 1.2rem;
+    }
+
+    /* ============================================
+       EMOTIONAL CLOSE — Dobra 9
+       ============================================ */
+    .emotional-close {
+      max-width: 100%;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .emotional-close-inner {
+      max-width: var(--max-w-content);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .emotional-close h2 {
+      color: var(--magenta);
+      font-size: clamp(1.8rem, 5.5vw, 2.8rem);
+      margin-bottom: 2rem;
+      letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    .emotional-body {
+      font-size: 1.3rem;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      color: var(--text-dark);
+      font-weight: 500;
+      text-align: center;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .consequences {
+      list-style: none;
+      text-align: left;
+      max-width: 700px;
+      margin: 2.5rem auto;
+      width: 100%;
+    }
+
+    .consequences li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+      color: var(--text-dark);
+      line-height: 1.7;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .consequences li:last-child {
+      border-bottom: none;
+    }
+
+    .consequences li::before {
+      content: '✗';
+      color: var(--red);
+      font-weight: bold;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .emotional-final {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-top: 3rem;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .emotional-final::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--magenta), var(--red));
+      border-radius: 2px;
+      margin: 1.5rem auto 0;
+    }
+
+    /* ============================================
+       GUARANTEE — Dobra 10
+       ============================================ */
+    .guarantee {
+      max-width: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .guarantee-container {
+      width: 100%;
+      max-width: 1000px;
+      padding: 0 2rem;
+    }
+
+    .guarantee-box {
+      background: var(--bg-white);
+      border-radius: var(--radius-xl);
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      padding: 3.5rem;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .guarantee-left {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .guarantee-combined-img {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.08));
+      transition: transform var(--transition-normal);
+    }
+
+    .guarantee-combined-img:hover {
+      transform: scale(1.03);
+    }
+
+    .guarantee-right {
+      padding-right: 1rem;
+    }
+
+    .guarantee-right h3 {
+      font-size: clamp(1.8rem, 3vw, 2.2rem);
+      line-height: 1.3;
+      margin-bottom: 1.5rem;
+      color: var(--text-dark);
+      letter-spacing: -0.03em;
+    }
+
+    .guarantee-right h3 strong {
+      color: var(--magenta);
+      font-weight: 700;
+    }
+
+    .guarantee-right p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .guarantee-right p u {
+      color: var(--magenta);
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 2px solid var(--magenta);
+      padding-bottom: 1px;
+    }
+
+    /* ============================================
+       BIO — Dobra 11
+       ============================================ */
+    .bio {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .bio-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .bio-content {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 3.5rem;
+      align-items: start;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .bio-photo {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      position: sticky;
+      top: 100px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .bio-photo-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .bio-photo:hover .bio-photo-img {
+      transform: scale(1.03);
+    }
+
+    .bio-text h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    .bio-text h3::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--magenta), var(--purple));
+      margin-top: 1rem;
+      border-radius: 2px;
+    }
+
+    .bio-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .bio-signature {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-style: italic;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-top: 2rem;
+      letter-spacing: -0.03em;
+    }
+
+    /* ============================================
+       FINAL CTA — Dobra 12
+       ============================================ */
+    .final-cta {
+      background: linear-gradient(135deg, #7B1FA2 0%, #D6249F 40%, #C62828 80%, #E65100 100%);
+      color: #FFFFFF;
+      width: 100%;
+      padding: 6rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.08), transparent 50%),
+                  radial-gradient(circle at 70% 80%, rgba(255,255,255,0.06), transparent 50%);
+      pointer-events: none;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(2rem, 7vw, 3.8rem);
+      text-align: center;
+      margin-bottom: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      position: relative;
+      z-index: 1;
+      color: var(--text-white);
+    }
+
+    .final-cta-mockup-container {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto 3rem;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+      animation: zoomIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .final-cta-mockup {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform var(--transition-slow);
+    }
+
+    .final-cta-mockup-container:hover .final-cta-mockup {
+      transform: scale(1.02);
+    }
+
+    .final-offer-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-xl);
+      padding: 3rem;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+
+    .final-offer-box .offer-original {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .final-offer-box .offer-original::after {
+      background: rgba(255,255,255,0.8);
+    }
+
+    .final-offer-box .offer-price {
+      color: var(--accent-yellow);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    }
+
+    .final-offer-box .price-label {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .final-cta-btn {
+      background: linear-gradient(135deg, #FFD600 0%, #F0C800 50%, #E5B800 100%);
+      color: var(--text-dark);
+      border: none;
+      padding: 1.3rem 3rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      transition: all var(--transition-normal);
+      margin: 1.5rem 0;
+      font-family: var(--font-body);
+      box-shadow: 0 8px 24px rgba(255, 214, 0, 0.3);
+      animation: ctaPulseYellow 3s ease-in-out infinite;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.05);
+      min-height: 56px;
+    }
+
+    .final-cta-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(255, 214, 0, 0.5);
+      animation: none;
+    }
+
+    .final-cta-btn:active {
+      transform: translateY(-1px);
+      animation: none;
+    }
+
+    .final-seals {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .final-seal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .final-seal-icon {
+      font-size: 1.6rem;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .site-footer {
+      background: var(--text-dark);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 2.5rem 2rem;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+    }
+
+    .site-footer p {
+      color: rgba(255,255,255,0.5);
+      margin: 0;
+    }
+
+    .site-footer .footer-brand {
+      color: rgba(255,255,255,0.7);
+      font-weight: 600;
+    }
+
+    .site-footer .footer-divider {
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      margin: 0.8rem auto;
+    }
+
+    /* ============================================
+       RESPONSIVE — Tablet
+       ============================================ */
     @media (max-width: 768px) {
+      section {
+        padding: 5rem 1.5rem;
+      }
+
+      header {
+        padding: 0.8rem 1.2rem;
+      }
+
+      .logo {
+        height: 36px;
+      }
+
+      .header-cta {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+      }
+
+      .hero-benefits-top {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: center;
+      }
+
+      .hero-benefit-item {
+        font-size: var(--font-size-base);
+        padding: var(--spacing-sm) var(--spacing-md);
+      }
+
+      .hero-benefit-item::before {
+        font-size: 1.2rem;
+      }
+
+      .hero-image-container {
+        margin-top: 2rem;
+      }
+
+      .hero-trust-badges {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: center;
+      }
+
+      .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .bento-card .bento-arrow {
+        display: none;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .deliverables {
+        padding: 5rem 1.5rem;
+      }
+
       .deliverable-item,
       .deliverable-item.alternate {
         grid-template-columns: 1fr;
@@ -921,390 +1918,29 @@
         text-align: left;
         font-size: 1rem;
       }
-    }
 
-    /* Dobra 7 - Para quem é */
-    .for-who {
-      background: var(--bg-white);
-      color: var(--text-dark);
-      max-width: 1100px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 4rem 2rem;
-    }
-
-    .for-who h2 {
-      font-size: clamp(1.8rem, 5.5vw, 2.8rem);
-      text-align: center;
-      margin-bottom: 3rem;
-      letter-spacing: -0.3px;
-    }
-
-    .for-who-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3.5rem;
-      align-items: center;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .for-who-bullets {
-      list-style: none;
-    }
-
-    .for-who-bullets li {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.2rem;
-      margin-bottom: 1.3rem;
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
-
-    .for-who-bullets li::before {
-      content: '✔';
-      color: var(--magenta);
-      font-weight: bold;
-      font-size: 1.3rem;
-      flex-shrink: 0;
-      margin-top: 0.1rem;
-    }
-
-    .for-who-photo {
-      border-radius: var(--radius-lg);
-      height: 420px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-white);
-      font-size: 0.95rem;
-      box-shadow: var(--shadow-xl);
-      overflow: hidden;
-    }
-
-    @media (max-width: 768px) {
       .for-who-content {
-        grid-template-columns: 1fr;
+        flex-direction: column;
       }
 
-      .for-who {
-        padding: 3rem 2rem;
-      }
-    }
-
-    /* Dobra 8 - Recapitulação + Oferta */
-    .recap-offer {
-      background: var(--bg-white);
-      max-width: 1100px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .recap-offer h2 {
-      font-size: clamp(1.8rem, 5.5vw, 2.8rem);
-      text-align: center;
-      margin-bottom: 3rem;
-      letter-spacing: -0.3px;
-    }
-
-    .offer-box {
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      border-radius: var(--radius-lg);
-      padding: var(--spacing-2xl);
-      background: linear-gradient(135deg, #FFFFFF 0%, #FAF9F7 100%);
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: var(--spacing-2xl);
-      align-items: center;
-      box-shadow: var(--shadow-md);
-      transition: all var(--transition-normal);
-      backdrop-filter: blur(10px);
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .offer-mockup {
-      width: 100%;
-      height: auto;
-      border-radius: var(--radius-lg);
-      object-fit: contain;
-    }
-
-    .offer-content {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-xl);
-    }
-
-    .offer-box:hover {
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(0, 0, 0, 0.1);
-      transform: translateY(-4px);
-    }
-
-    .offer-left {
-      list-style: none;
-    }
-
-    .offer-left li {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      margin-bottom: 1.2rem;
-      font-size: 1.05rem;
-      color: var(--text-dark);
-    }
-
-    .offer-left li::before {
-      content: '✔';
-      color: var(--magenta);
-      font-weight: bold;
-      font-size: 1.4rem;
-      flex-shrink: 0;
-    }
-
-    .offer-right {
-      text-align: center;
-    }
-
-    .offer-original {
-      font-size: 1.05rem;
-      text-decoration: line-through;
-      color: #999;
-      margin-bottom: 0.5rem;
-    }
-
-    .offer-price {
-      font-size: 3.5rem;
-      font-weight: 800;
-      color: var(--text-dark);
-      margin: 1rem 0;
-      font-family: var(--font-display);
-      letter-spacing: -1px;
-    }
-
-    .price-label {
-      font-size: 1rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-    }
-
-    .seals {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-      flex-wrap: wrap;
-    }
-
-    .seal {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .seal-icon {
-      font-size: 1.3rem;
-    }
-
-    @media (max-width: 768px) {
       .offer-box {
         grid-template-columns: 1fr;
-        padding: 2.5rem;
+        padding: 2rem;
       }
 
       .offer-content {
         flex-direction: column;
       }
-    }
 
-    /* Dobra 9 - Fechamento Emocional */
-    .emotional-close {
-      background: var(--bg-white);
-      max-width: var(--max-w-content);
-      width: 100%;
-      margin: 0 auto;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .emotional-close h2 {
-      color: var(--magenta);
-      font-size: clamp(1.8rem, 5.5vw, 2.8rem);
-      margin-bottom: 2rem;
-      letter-spacing: -0.3px;
-      font-weight: 800;
-    }
-
-    .emotional-body {
-      font-size: 1.25rem;
-      line-height: 1.8;
-      margin-bottom: 2.5rem;
-      color: var(--text-dark);
-      font-weight: 500;
-      text-align: center;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .consequences {
-      list-style: none;
-      text-align: center;
-      max-width: 700px;
-      margin: 2.5rem auto;
-      width: 100%;
-    }
-
-    .consequences li {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.2rem;
-      margin-bottom: 1.3rem;
-      font-size: 1.05rem;
-      color: var(--text-dark);
-      line-height: 1.65;
-    }
-
-    .consequences li::before {
-      content: '✗';
-      color: var(--magenta);
-      font-weight: bold;
-      font-size: 1.4rem;
-      flex-shrink: 0;
-      margin-top: 0.1rem;
-    }
-
-    .emotional-final {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--text-dark);
-      margin-top: 3rem;
-      letter-spacing: -0.3px;
-    }
-
-    /* Dobra 10 - Garantia */
-    .guarantee {
-      background: var(--bg-section-alt);
-      max-width: 1100px;
-      width: 100%;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .guarantee-container {
-      width: 100%;
-      max-width: 1000px;
-      padding: 0 2rem;
-    }
-
-    .guarantee-box {
-      background: var(--bg-white);
-      border-radius: var(--radius-lg);
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 4rem;
-      align-items: center;
-      padding: 3.5rem 3.5rem 3.5rem 2rem;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-    }
-
-    .guarantee-left {
-      position: relative;
-      display: flex;
-      justify-content: center;
-    }
-
-    .guarantee-photo {
-      position: relative;
-      width: 280px;
-      height: 320px;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .guarantee-photo-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .guarantee-badge-overlay {
-      position: absolute;
-      bottom: -30px;
-      right: -30px;
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    }
-
-    .guarantee-badge-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
-    .guarantee-right {
-      padding-right: 1rem;
-    }
-
-    .guarantee-right h3 {
-      font-size: clamp(1.8rem, 3vw, 2.2rem);
-      line-height: 1.3;
-      margin-bottom: 1.5rem;
-      color: var(--text-dark);
-      letter-spacing: -0.5px;
-    }
-
-    .guarantee-right h3 strong {
-      color: var(--magenta);
-      font-weight: 700;
-    }
-
-    .guarantee-right p {
-      font-size: 1.05rem;
-      line-height: 1.85;
-      color: var(--text-muted);
-      margin-bottom: 1.2rem;
-    }
-
-    .guarantee-right p u {
-      color: var(--magenta);
-      text-decoration: none;
-      font-weight: 600;
-      border-bottom: 2px solid var(--magenta);
-    }
-
-    @media (max-width: 768px) {
       .guarantee-box {
         grid-template-columns: 1fr;
         gap: 2.5rem;
         padding: 2.5rem 1.5rem;
       }
 
-      .guarantee-photo {
-        width: 240px;
-        height: 280px;
+      .guarantee-combined-img {
+        max-width: 260px;
         margin: 0 auto;
-      }
-
-      .guarantee-badge-overlay {
-        width: 110px;
-        height: 110px;
-        bottom: -25px;
-        right: -25px;
       }
 
       .guarantee-right {
@@ -1314,217 +1950,161 @@
       .guarantee-right h3 {
         font-size: 1.6rem;
       }
-    }
 
-    /* Dobra 11 - Bio Lisandra */
-    .bio {
-      background: var(--bg-section-alt);
-      max-width: 1100px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .bio-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3.5rem;
-      align-items: center;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .bio-photo {
-      border-radius: var(--radius-lg);
-      height: 420px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-white);
-      font-size: 0.95rem;
-      box-shadow: var(--shadow-xl);
-      overflow: hidden;
-    }
-
-    .bio-text h3 {
-      font-size: 1.6rem;
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.2px;
-    }
-
-    .bio-text h3::after {
-      content: '';
-      display: block;
-      width: 70px;
-      height: 3px;
-      background: var(--magenta);
-      margin-top: 1rem;
-    }
-
-    .bio-text p {
-      font-size: 1.05rem;
-      line-height: 1.85;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .bio-signature {
-      font-family: var(--font-display);
-      font-size: 1.9rem;
-      font-style: italic;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-top: 2rem;
-      letter-spacing: -0.3px;
-    }
-
-    @media (max-width: 768px) {
       .bio-content {
         grid-template-columns: 1fr;
       }
-    }
 
-    /* Dobra 12 - CTA Final */
-    .final-cta {
-      background: var(--primary-gradient);
-      color: #FFFFFF;
-      width: 100%;
-      padding: 5rem 2rem;
-    }
-
-    .final-cta h2 {
-      font-size: clamp(2rem, 7vw, 3.8rem);
-      text-align: center;
-      margin-bottom: 3rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
-
-    .final-offer-box {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 3rem;
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .final-offer-box .offer-price {
-      color: var(--accent-yellow);
-    }
-
-    .final-offer-box .price-label {
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .final-cta-btn {
-      background: linear-gradient(135deg, #FFD600, #FFE082);
-      color: var(--text-dark);
-      border: none;
-      padding: 1.2rem 2.8rem;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      transition: transform 0.2s ease;
-      margin: 1.5rem 0;
-      font-family: var(--font-body);
-    }
-
-    .final-cta-btn:hover {
-      transform: translateY(-4px);
-    }
-
-    .final-cta-mockup-container {
-      max-width: 900px;
-      width: 100%;
-      margin: 0 auto 3rem;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      animation: zoomIn 0.8s ease-out 0.2s both;
-    }
-
-    .final-cta-mockup {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform var(--transition-slow);
-    }
-
-    .final-cta-mockup-container:hover .final-cta-mockup {
-      transform: scale(1.02);
-    }
-
-    .final-seals {
-      display: flex;
-      justify-content: center;
-      gap: 2.5rem;
-      margin-top: 2.5rem;
-      flex-wrap: wrap;
-    }
-
-    .final-seal {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .final-seal-icon {
-      font-size: 1.6rem;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      section {
-        padding: 3rem 1.5rem;
+      .bio-photo {
+        max-width: 320px;
+        margin: 0 auto;
+        position: static;
       }
 
-      header {
-        padding: 1rem 1.5rem;
-      }
-
-      .logo {
-        font-size: 1.1rem;
-      }
-
-      .header-cta {
-        padding: 0.6rem 1rem;
-        font-size: 0.8rem;
-      }
-
-      .flow-diagram {
-        gap: 0.5rem;
-      }
-
-      .flow-node {
-        width: 100px;
-        height: 100px;
-        font-size: 0.85rem;
-      }
-
-      .flow-arrow {
-        display: none;
-      }
-
-      .steps-grid {
-        grid-template-columns: 1fr;
+      .final-cta {
+        padding: 4rem 1.5rem;
       }
 
       .seals {
         gap: 0.8rem;
-        font-size: 0.85rem;
       }
 
       .final-seals {
         gap: 1.5rem;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE — Small phones
+       ============================================ */
+    @media (max-width: 480px) {
+      section {
+        padding: 4rem 1rem;
+      }
+
+      h1 {
+        font-size: clamp(1.6rem, 7vw, 2.2rem);
+      }
+
+      h2 {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+      }
+
+      body {
+        font-size: 16px;
+      }
+
+      .hero {
+        padding-top: 3rem;
+        min-height: auto;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.6rem, 7vw, 2.4rem);
+      }
+
+      .hero .subtitle {
+        font-size: 1rem;
+      }
+
+      .cta-btn {
+        padding: 1.2rem 2rem;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 340px;
+        min-height: 52px;
+      }
+
+      .cta-outline {
+        width: 100%;
+        max-width: 340px;
+        justify-content: center;
+      }
+
+      .final-cta-btn {
+        padding: 1.1rem 2rem;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 340px;
+        min-height: 52px;
+      }
+
+      .offer-box {
+        padding: 1.5rem;
+      }
+
+      .offer-price {
+        font-size: 2.8rem;
+      }
+
+      .final-offer-box {
+        padding: 2rem 1.5rem;
+      }
+
+      .final-offer-box .offer-price {
+        font-size: 2.8rem;
+      }
+
+      .for-who-bullets li {
+        font-size: 0.95rem;
+        padding: 0.6rem 0.8rem;
+      }
+
+      .consequences li {
+        font-size: 0.95rem;
+      }
+
+      .emotional-body {
+        font-size: 1.15rem;
+      }
+
+      .emotional-final {
+        font-size: 1.4rem;
+      }
+
+      .bio-text h3 {
+        font-size: 1rem;
+      }
+
+      .bio-signature {
+        font-size: 1.5rem;
+      }
+
+      .step-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .step-number-circle {
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+      }
+
+      .guarantee-box {
+        padding: 2rem 1.2rem;
+      }
+
+      .deliverables {
+        padding: 4rem 1rem;
+      }
+
+      .alert-box {
+        padding: 1.5rem 1.2rem;
+      }
+
+      .section-badge {
+        font-size: 0.65rem;
+        padding: 0.4rem 1rem;
+      }
+    }
+
+    /* ============================================
+       PRINT RESET (prevent layout issues)
+       ============================================ */
+    @media print {
+      section.fade-in {
+        opacity: 1 !important;
+        transform: none !important;
       }
     }
   </style>
@@ -1533,16 +2113,14 @@
   <!-- Header -->
   <header id="header">
     <div class="logo">
-      <img src="/logo-obsessao-zero.png" alt="Logo Protocolo Obsessão Zero - Método de Des-Obsessão Emocional" loading="eager">
+      <img src="/logo-topo.png" alt="Logo Protocolo Obsessão Zero - Lisandra Zanuto" loading="eager">
     </div>
     <button class="header-cta" onclick="document.querySelector('#oferta').scrollIntoView()" aria-label="Ir para seção de oferta do protocolo">Quero Acessar</button>
   </header>
 
   <!-- Dobra 1: Hero -->
   <section class="hero fade-in">
-    <div class="badge">
-      <img src="/logo-obsessao-zero.png" alt="Logo Protocolo Obsessão Zero - Método de Des-Obsessão Emocional" loading="eager">
-    </div>
+    <span class="section-badge"><img src="/logo-magenta.png" alt="Protocolo Obsessão Zero"></span>
 
     <h1>Copie e cole esse protocolo emocional simples para controlar a <span class="highlight-yellow">compulsão pelo seu ex ou ficante</span></h1>
 
@@ -1551,19 +2129,21 @@
     </div>
 
     <div class="hero-benefits-top">
-      <div class="hero-benefit-item">✔ Controlar recaídas</div>
-      <div class="hero-benefit-item">✔ Reduzir ansiedade</div>
-      <div class="hero-benefit-item">✔ Interromper o ciclo</div>
+      <div class="hero-benefit-item">Controlar recaídas</div>
+      <div class="hero-benefit-item">Reduzir ansiedade</div>
+      <div class="hero-benefit-item">Interromper o ciclo</div>
     </div>
 
+
     <div class="hero-image-container">
-      <img src="/antes-depois-hero.png" alt="Comparação Antes e Depois - Resultado do Protocolo Obsessão Zero com redução de ansiedade e controle emocional" class="hero-full-image" loading="eager">
+      <img src="/hero-image-v5.png" alt="Mulher empoderada após superar obsessão emocional - Protocolo Obsessão Zero" class="hero-full-image" loading="eager">
     </div>
 
   </section>
 
   <!-- Dobra 2: Agitação -->
   <section class="agitation fade-in">
+
     <h2>Você já percebeu que tenta parar… mas sempre volta pra ele de novo?</h2>
 
     <p class="agitation-text">
@@ -1577,6 +2157,7 @@
 
   <!-- Dobra 3: Diagnóstico -->
   <section class="diagnostic fade-in">
+
     <div class="alert-box">
       <h3>O problema não é saudade.</h3>
       <p class="alert-subtitle">O problema é que sua mente entrou em um ciclo automático emocional.</p>
@@ -1584,14 +2165,26 @@
 
     <p class="diagnostic-text">Veja esse padrão:</p>
 
-    <div class="flow-diagram">
-      <div class="flow-node">Pensamento</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">Impulso</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">Ansiedade</div>
-      <div class="flow-arrow">→</div>
-      <div class="flow-node">Recaída</div>
+    <div class="bento-grid">
+      <div class="bento-card">
+        <div class="bento-number">01</div>
+        <div class="bento-label">Pensamento</div>
+        <span class="bento-arrow">→</span>
+      </div>
+      <div class="bento-card">
+        <div class="bento-number">02</div>
+        <div class="bento-label">Impulso</div>
+        <span class="bento-arrow">↓</span>
+      </div>
+      <div class="bento-card">
+        <div class="bento-number">03</div>
+        <div class="bento-label">Ansiedade</div>
+        <span class="bento-arrow">→</span>
+      </div>
+      <div class="bento-card">
+        <div class="bento-number">04</div>
+        <div class="bento-label">Recaída</div>
+      </div>
     </div>
 
     <p class="diagnostic-text">
@@ -1601,167 +2194,191 @@
 
   <!-- Dobra 4: Solução -->
   <section class="solution fade-in">
-    <h2>É simples assim.</h2>
-    <p class="solution-subtitle">Existe um protocolo para interromper esse ciclo emocional.</p>
 
-    <div class="benefits">
-      <div class="benefit">
-        <div class="benefit-icon">✔</div>
-        <div class="benefit-text">Reconhecer o ciclo</div>
-      </div>
-      <div class="benefit">
-        <div class="benefit-icon">✔</div>
-        <div class="benefit-text">Interromper no impulso</div>
-      </div>
-      <div class="benefit">
-        <div class="benefit-icon">✔</div>
-        <div class="benefit-text">Recuperar o controle</div>
+    <div class="solution-inner">
+      <h2>É simples assim.</h2>
+      <p class="solution-subtitle">Existe um protocolo para interromper esse ciclo emocional.</p>
+
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit-icon">✔</div>
+          <div class="benefit-text">Reconhecer o ciclo</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">✔</div>
+          <div class="benefit-text">Interromper no impulso</div>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">✔</div>
+          <div class="benefit-text">Recuperar o controle</div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Dobra 5: Os 3 Passos -->
   <section class="steps fade-in">
-    <h2>Esses são os 3 passos para controlar a compulsão emocional</h2>
 
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-number">01</div>
-        <h3>Parar e Reconhecer</h3>
-        <p>Identifique quando você entrou no ciclo. Qual foi o gatilho? O que você está sentindo? A respiração acelerada, o peito aperto, a vontade incontrolável de abrir o WhatsApp.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-number">02</div>
-        <h3>Aplicar a Técnica</h3>
-        <p>Use o protocolo que vou ensinar para interromper o impulso no exato momento. Isso que separa quem consegue fazer e quem fica girando em volta da compulsão.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-number">03</div>
-        <h3>Construir Nova Resposta</h3>
-        <p>Repetição. Cada vez que você interrompe, você está remapeando seu cérebro. Seu sistema nervoso aprende uma resposta nova. Livre do ex. Em paz consigo.</p>
+    <div class="steps-inner">
+      <h2>Esses são os 3 passos para controlar a compulsão emocional</h2>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-header">
+            <div class="step-number-circle">01</div>
+            <div class="step-label">PASSO</div>
+          </div>
+          <h3>Parar e Reconhecer</h3>
+          <p>Identifique quando você entrou no ciclo. Qual foi o gatilho? O que você está sentindo? A respiração acelerada, o peito aperto, a vontade incontrolável de abrir o WhatsApp.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-header">
+            <div class="step-number-circle">02</div>
+            <div class="step-label">PASSO</div>
+          </div>
+          <h3>Aplicar a Técnica</h3>
+          <p>Use o protocolo que vou ensinar para interromper o impulso no exato momento. Isso que separa quem consegue fazer e quem fica girando em volta da compulsão.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-header">
+            <div class="step-number-circle">03</div>
+            <div class="step-label">PASSO</div>
+          </div>
+          <h3>Construir Nova Resposta</h3>
+          <p>Repetição. Cada vez que você interrompe, você está remapeando seu cérebro. Seu sistema nervoso aprende uma resposta nova. Livre do ex. Em paz consigo.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Dobra 6: Entregáveis -->
   <section class="deliverables fade-in">
-    <h2>Agora veja exatamente o que você vai receber</h2>
 
-    <div class="deliverable-item">
-      <div class="deliverable-image-box">
-        <img src="/aula-pratica.png" alt="Aula Prática - Como Parar de Pensar Nele com vídeo e conteúdo escrito" class="deliverable-image-clean" loading="lazy">
-      </div>
-      <div class="deliverable-content">
-        <h3 class="deliverable-title-clean">Aula Prática <span class="highlight">— Como Parar de Pensar Nele</span></h3>
-        <p class="deliverable-description">Você vai receber vídeos gravados por mim mostrando exatamente os 3 passos do protocolo. Além disso, todo conteúdo também em PDF para você ler quando quiser, na velocidade que conseguir processar.</p>
-        <ul class="deliverable-bullets-clean">
-          <li>A verdade sobre por que você não consegue parar</li>
-          <li>Os 3 passos do protocolo passo a passo</li>
-          <li>Técnicas de respiração e ancoramento emocional</li>
-        </ul>
-      </div>
-    </div>
+    <div class="deliverables-inner">
+      <h2>Agora veja exatamente o que você vai receber</h2>
 
-    <div class="deliverable-item alternate">
-      <div class="deliverable-image-box">
-        <img src="/protocolo-obsessao-zero-box.png" alt="Protocolo Obsessão Zero - Caixa com método emocional completo" class="deliverable-image-clean" loading="lazy">
+      <div class="deliverable-item">
+        <div class="deliverable-image-box">
+          <img src="/aula-pratica.png" alt="Aula Prática - Como Parar de Pensar Nele com vídeo e conteúdo escrito" class="deliverable-image-clean" loading="lazy">
+        </div>
+        <div class="deliverable-content">
+          <h3 class="deliverable-title-clean">Aula Prática <span class="highlight">— Como Parar de Pensar Nele</span></h3>
+          <p class="deliverable-description">Você vai receber vídeos gravados por mim mostrando exatamente os 3 passos do protocolo. Além disso, todo conteúdo também em PDF para você ler quando quiser, na velocidade que conseguir processar.</p>
+          <ul class="deliverable-bullets-clean">
+            <li>A verdade sobre por que você não consegue parar</li>
+            <li>Os 3 passos do protocolo passo a passo</li>
+            <li>Técnicas de respiração e ancoramento emocional</li>
+          </ul>
+        </div>
       </div>
-      <div class="deliverable-content">
-        <h3 class="deliverable-title-clean">Protocolo Obsessão Zero <span class="highlight">— Seu Método Completo</span></h3>
-        <p class="deliverable-description">Um guia físico e digital que você pode acessar a qualquer momento. Sempre que bater aquela vontade incontrolável, você tem o protocolo à mão para aplicar no exato momento da crise.</p>
-        <ul class="deliverable-bullets-clean">
-          <li>Acesso imediato a todo o conteúdo em digital e físico</li>
-          <li>Método prático que você pode aplicar agora</li>
-          <li>Moldura bonita para lembrete visual diário</li>
-        </ul>
-      </div>
-    </div>
 
-    <div class="deliverable-item">
-      <div class="deliverable-image-box">
-        <img src="/folha-exercicios.png" alt="Folha de Exercícios Emocionais - Material imprimível com exercícios práticos" class="deliverable-image-clean" loading="lazy">
+      <div class="deliverable-item alternate">
+        <div class="deliverable-image-box">
+          <img src="/protocolo-obsessao-zero-box.png" alt="Protocolo Obsessão Zero - Caixa com método emocional completo" class="deliverable-image-clean" loading="lazy">
+        </div>
+        <div class="deliverable-content">
+          <h3 class="deliverable-title-clean">Protocolo Obsessão Zero <span class="highlight">— Seu Método Completo</span></h3>
+          <p class="deliverable-description">Um guia físico e digital que você pode acessar a qualquer momento. Sempre que bater aquela vontade incontrolável, você tem o protocolo à mão para aplicar no exato momento da crise.</p>
+          <ul class="deliverable-bullets-clean">
+            <li>Acesso imediato a todo o conteúdo em digital e físico</li>
+            <li>Método prático que você pode aplicar agora</li>
+            <li>Moldura bonita para lembrete visual diário</li>
+          </ul>
+        </div>
       </div>
-      <div class="deliverable-content">
-        <h3 class="deliverable-title-clean">Folha de Exercícios <span class="highlight">— Sua Jornada Mapeada</span></h3>
-        <p class="deliverable-description">Você não vai ficar sozinha nesse processo. A folha de exercícios é seu mapa. Ela vai te ajudar a identificar seus gatilhos pessoais, rastrear seus padrões de compulsão e criar seu plano de ação para os próximos 30 dias.</p>
-        <ul class="deliverable-bullets-clean">
-          <li>Mapeamento dos seus gatilhos pessoais</li>
-          <li>Tabela prática para rastrear compulsões</li>
-          <li>Plano de ação para os próximos 30 dias</li>
-        </ul>
-      </div>
-    </div>
 
-    <div class="deliverable-item alternate">
-      <div class="deliverable-image-box">
-        <img src="/protocolo-anti-recaida.png" alt="Protocolo Prático Anti-Recaída - Livro com método passo a passo" class="deliverable-image-clean" loading="lazy">
+      <div class="deliverable-item">
+        <div class="deliverable-image-box">
+          <img src="/folha-exercicios.png" alt="Folha de Exercícios Emocionais - Material imprimível com exercícios práticos" class="deliverable-image-clean" loading="lazy">
+        </div>
+        <div class="deliverable-content">
+          <h3 class="deliverable-title-clean">Folha de Exercícios <span class="highlight">— Sua Jornada Mapeada</span></h3>
+          <p class="deliverable-description">Você não vai ficar sozinha nesse processo. A folha de exercícios é seu mapa. Ela vai te ajudar a identificar seus gatilhos pessoais, rastrear seus padrões de compulsão e criar seu plano de ação para os próximos 30 dias.</p>
+          <ul class="deliverable-bullets-clean">
+            <li>Mapeamento dos seus gatilhos pessoais</li>
+            <li>Tabela prática para rastrear compulsões</li>
+            <li>Plano de ação para os próximos 30 dias</li>
+          </ul>
+        </div>
       </div>
-      <div class="deliverable-content">
-        <h3 class="deliverable-title-clean">Protocolo Anti-Recaída <span class="highlight">— Seu Escudo Emocional</span></h3>
-        <p class="deliverable-description">Porque a recaída é parte do processo. Este protocolo te ensina exatamente o que fazer quando (não se) ela bater. Sem culpa, sem julgamento. Apenas ferramentas práticas para você voltar ao controle rapidinho.</p>
-        <ul class="deliverable-bullets-clean">
-          <li>O que fazer quando a recaída bate</li>
-          <li>Checklist de retorno ao protocolo após deslize</li>
-          <li>Frases de ancoragem para momentos críticos</li>
-        </ul>
+
+      <div class="deliverable-item alternate">
+        <div class="deliverable-image-box">
+          <img src="/protocolo-anti-recaida.png" alt="Protocolo Prático Anti-Recaída - Livro com método passo a passo" class="deliverable-image-clean" loading="lazy">
+        </div>
+        <div class="deliverable-content">
+          <h3 class="deliverable-title-clean">Protocolo Anti-Recaída <span class="highlight">— Seu Escudo Emocional</span></h3>
+          <p class="deliverable-description">Porque a recaída é parte do processo. Este protocolo te ensina exatamente o que fazer quando (não se) ela bater. Sem culpa, sem julgamento. Apenas ferramentas práticas para você voltar ao controle rapidinho.</p>
+          <ul class="deliverable-bullets-clean">
+            <li>O que fazer quando a recaída bate</li>
+            <li>Checklist de retorno ao protocolo após deslize</li>
+            <li>Frases de ancoragem para momentos críticos</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Dobra 7: Para Quem É -->
   <section class="for-who fade-in">
-    <h2>Esse protocolo foi criado para mulheres que:</h2>
 
-    <div class="for-who-content">
-      <ul class="for-who-bullets">
-        <li>Sabem que o relacionamento acabou mas o cérebro não consegue processar</li>
-        <li>Acordam pensando nele e dormem vendo o perfil dele</li>
-        <li>Tentaram terapia mas precisam de algo prático e funcional agora</li>
-        <li>Conhecem a dor mas não conhecem o caminho para sair</li>
-        <li>Querem recuperar a dignidade, a calma e o controle emocional</li>
-        <li>Estão cansadas de viver em um loop de compulsão e arrependimento</li>
-      </ul>
-      <div class="for-who-photo" style="background: linear-gradient(135deg, rgba(139,47,201,0.08), rgba(233,30,140,0.08)); border: 2px solid rgba(233,30,140,0.15);" role="img" aria-label="Mulher em momento de paz e autoestima após superar obsessão emocional"></div>
+    <div class="for-who-inner">
+      <h2>Esse protocolo foi criado para mulheres que:</h2>
+
+      <div class="for-who-content">
+        <ul class="for-who-bullets">
+          <li>Sabem que o relacionamento acabou mas o cérebro não consegue processar</li>
+          <li>Acordam pensando nele e dormem vendo o perfil dele</li>
+          <li>Tentaram terapia mas precisam de algo prático e funcional agora</li>
+          <li>Conhecem a dor mas não conhecem o caminho para sair</li>
+          <li>Querem recuperar a dignidade, a calma e o controle emocional</li>
+          <li>Estão cansadas de viver em um loop de compulsão e arrependimento</li>
+        </ul>
+        <div class="for-who-photo" style="background: linear-gradient(135deg, rgba(139,47,201,0.08), rgba(233,30,140,0.08)); border: 2px solid rgba(233,30,140,0.15);" role="img" aria-label="Mulher em momento de paz e autoestima após superar obsessão emocional"></div>
+      </div>
     </div>
   </section>
 
   <!-- Dobra 8: Recapitulação + Oferta -->
   <section class="recap-offer fade-in" id="oferta">
-    <h2>Recapitulando tudo o que você vai receber:</h2>
 
-    <div class="offer-box">
-      <img src="/mockup-1.png" alt="Mockup dos produtos entregáveis do Protocolo Obsessão Zero" class="offer-mockup" loading="lazy">
+    <div class="recap-offer-inner">
+      <h2>Recapitulando tudo o que você vai receber:</h2>
 
-      <div class="offer-content">
-        <ul class="offer-left">
-          <li>Aula Prática (vídeo + conteúdo escrito)</li>
-          <li>Folha de Exercícios Emocionais (PDF interativo)</li>
-          <li>Protocolo Anti-Recaída (printável)</li>
-          <li>Módulo Bônus: Técnicas de Mindfulness</li>
-          <li>Comunidade privada no Telegram (30 dias)</li>
-          <li>Suporte direto via WhatsApp (7 dias)</li>
-          <li>Garantia incondicional 7 dias ou 100% de volta</li>
-        </ul>
+      <div class="offer-box">
+        <img src="/mockup-1.png" alt="Mockup dos produtos entregáveis do Protocolo Obsessão Zero" class="offer-mockup" loading="lazy">
 
-        <div class="offer-right">
-          <p class="offer-original">De R$ 290,00</p>
-          <p class="price-label">por apenas</p>
-          <p class="offer-price">R$ 87,00</p>
-          <p class="price-label">ou em até 3x sem juros</p>
-          <button class="cta-btn" aria-label="Acessar o Protocolo Obsessão Zero por R$ 87 em 3 parcelas">ACESSAR AGORA</button>
+        <div class="offer-content">
+          <ul class="offer-left">
+            <li>Aula Prática (vídeo + conteúdo escrito)</li>
+            <li>Folha de Exercícios Emocionais (PDF interativo)</li>
+            <li>Protocolo Anti-Recaída (printável)</li>
+            <li>Módulo Bônus: Técnicas de Mindfulness</li>
+            <li>Comunidade privada no Telegram (30 dias)</li>
+            <li>Suporte direto via WhatsApp (7 dias)</li>
+            <li>Garantia incondicional 7 dias ou 100% de volta</li>
+          </ul>
 
-          <div class="seals">
-            <div class="seal">
-              <span class="seal-icon">🔒</span>
-              <span>Compra Segura</span>
-            </div>
-            <div class="seal">
-              <span class="seal-icon">🔒</span>
-              <span>Privacidade Protegida</span>
-            </div>
-            <div class="seal">
-              <span class="seal-icon">⭐</span>
-              <span>Satisfação Garantida</span>
+          <div class="offer-right">
+            <p class="offer-original">De R$ 290,00</p>
+            <p class="price-label">por apenas</p>
+            <p class="offer-price">R$ 87,00</p>
+            <p class="price-label">ou em até 3x sem juros</p>
+            <button class="cta-btn" aria-label="Acessar o Protocolo Obsessão Zero por R$ 87 em 3 parcelas">ACESSAR AGORA</button>
+
+            <div class="seals">
+              <div class="seal">
+                <span class="seal-icon">🔒</span>
+                <span>Compra Segura</span>
+              </div>
+              <div class="seal">
+                <span class="seal-icon">🔒</span>
+                <span>Privacidade Protegida</span>
+              </div>
+              <div class="seal">
+                <span class="seal-icon">⭐</span>
+                <span>Satisfação Garantida</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1771,32 +2388,31 @@
 
   <!-- Dobra 9: Fechamento Emocional -->
   <section class="emotional-close fade-in">
-    <h2>Me responda com sinceridade…</h2>
 
-    <p class="emotional-body">Até quando você vai continuar deixando sua mente controlar você?</p>
+    <div class="emotional-close-inner">
+      <h2>Me responda com sinceridade…</h2>
 
-    <ul class="consequences">
-      <li>Mais noites sem dormir analisando o que você poderia ter feito diferente</li>
-      <li>Mais semanas perdidas em stalking e esperança de retorno</li>
-      <li>Mais amigos cansados de ouvir a mesma história</li>
-      <li>Mais oportunidades perdidas enquanto você fica presa no passado</li>
-      <li>Mais de você sacrificada por alguém que nem pensa em você</li>
-    </ul>
+      <p class="emotional-body">Até quando você vai continuar deixando sua mente controlar você?</p>
 
-    <p class="emotional-final">Isso não vai parar sozinho.</p>
+      <ul class="consequences">
+        <li>Mais noites sem dormir analisando o que você poderia ter feito diferente</li>
+        <li>Mais semanas perdidas em stalking e esperança de retorno</li>
+        <li>Mais amigos cansados de ouvir a mesma história</li>
+        <li>Mais oportunidades perdidas enquanto você fica presa no passado</li>
+        <li>Mais de você sacrificada por alguém que nem pensa em você</li>
+      </ul>
+
+      <p class="emotional-final">Isso não vai parar sozinho.</p>
+    </div>
   </section>
 
   <!-- Dobra 10: Garantia -->
   <section class="guarantee fade-in">
+
     <div class="guarantee-container">
       <div class="guarantee-box">
         <div class="guarantee-left">
-          <div class="guarantee-photo">
-            <img src="/Foto-lisandra.png" alt="Lisandra Zanuto com selo de garantia" class="guarantee-photo-img" loading="lazy">
-            <div class="guarantee-badge-overlay">
-              <img src="/garantia2.webp" alt="Garantia de 7 dias" class="guarantee-badge-img" loading="lazy">
-            </div>
-          </div>
+          <img src="/garantia-lisandra.png" alt="Lisandra Zanuto com selo de garantia incondicional de 7 dias" class="guarantee-combined-img" loading="lazy">
         </div>
 
         <div class="guarantee-right">
@@ -1810,18 +2426,23 @@
 
   <!-- Dobra 11: Bio Lisandra -->
   <section class="bio fade-in">
-    <div class="bio-content">
-      <div class="bio-photo" style="background-image: url('/Foto-lisandra.png'); background-size: cover; background-position: center;" role="img" aria-label="Lisandra Zanuto, psicóloga clínica especializada em traumas emocionais e relacionamentos tóxicos"></div>
 
-      <div class="bio-text">
-        <h3>SOBRE LISANDRA ZANUTO</h3>
-        <p>
-          Sou psicóloga clínica há mais de 10 anos, especializada em traumas emocionais, apego ansioso e relacionamentos tóxicos. Durante minha carreira, criei métodos próprios de intervenção rápida que funcionam fora do consultório — porque nem toda mulher tem acesso a terapia contínua.
-        </p>
-        <p>
-          Criei a comunidade <strong>Las Lobas</strong>, que hoje reúne mais de 80 mil mulheres. E dentro dessa comunidade, 6 mil mulheres fizeram o Protocolo Obsessão Zero. Os resultados? 87% delas conseguiram interromper a compulsão em menos de 30 dias.
-        </p>
-        <p class="bio-signature">Lisandra Zanuto</p>
+    <div class="bio-inner">
+      <div class="bio-content">
+        <div class="bio-photo">
+          <img src="/bio-lisandra.png" alt="Lisandra Zanuto, psicóloga clínica especializada em traumas emocionais e relacionamentos tóxicos" class="bio-photo-img" loading="lazy">
+        </div>
+
+        <div class="bio-text">
+          <h3>SOBRE LISANDRA ZANUTO</h3>
+          <p>
+            Sou psicóloga clínica há mais de 10 anos, especializada em traumas emocionais, apego ansioso e relacionamentos tóxicos. Durante minha carreira, criei métodos próprios de intervenção rápida que funcionam fora do consultório — porque nem toda mulher tem acesso a terapia contínua.
+          </p>
+          <p>
+            Criei a comunidade <strong>Las Lobas</strong>, que hoje reúne mais de 80 mil mulheres. E dentro dessa comunidade, 6 mil mulheres fizeram o Protocolo Obsessão Zero. Os resultados? 87% delas conseguiram interromper a compulsão em menos de 30 dias.
+          </p>
+          <p class="bio-signature">Lisandra Zanuto</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1858,6 +2479,13 @@
     </div>
   </section>
 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p><span class="footer-brand">Protocolo Obsessão Zero</span> — Lisandra Zanuto</p>
+    <span class="footer-divider"></span>
+    <p>© 2025 Todos os direitos reservados.</p>
+  </footer>
+
   <script>
     // Header visibility on scroll
     const header = document.getElementById('header');
@@ -1872,20 +2500,26 @@
       }
     });
 
-    // Intersection Observer for fade-in animations
-    const observer = new IntersectionObserver((entries) => {
+    // Intersection Observer for scroll-triggered fade-in animations
+    const fadeObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.animationDelay = '0s';
-          observer.unobserve(entry.target);
+          entry.target.classList.add('is-visible');
+          fadeObserver.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.1
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
     });
 
     document.querySelectorAll('.fade-in').forEach(el => {
-      observer.observe(el);
+      // Hero is always visible (first section)
+      if (el.classList.contains('hero')) {
+        el.classList.add('is-visible');
+      } else {
+        fadeObserver.observe(el);
+      }
     });
   </script>
 </body>
